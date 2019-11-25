@@ -1,0 +1,84 @@
+<template>
+  <q-layout view="hHh lpR fFf">
+    <!-- <q-header class=" q-px-md-xl  q-pa-xs-none">
+      <q-toolbar>
+        <q-toolbar-avatar>
+          <q-avatar
+            color="white"
+            size="30px"
+          >
+            <img src="~assets/jieIcons/apple-touch-icon-180x180.png">
+          </q-avatar>
+        </q-toolbar-avatar>
+        <q-toolbar-title style="margin-left:-8px;">
+          <span class="text-bold"> Login Statistic </span>
+        </q-toolbar-title>
+        <div>
+          <span class="text-bold"> v1 </span>
+        </div>
+      </q-toolbar>
+    </q-header> -->
+    <q-drawer
+      show-if-above
+      v-model="left"
+      side="right"
+      bordered
+      content-class="fireJieDrawer"
+    >
+      <div class="fireJie">
+        <img
+          src="~assets/fireImg/project_create_illo_welcome@2x.png"
+          alt=""
+        >
+      </div>
+    </q-drawer>
+
+    <q-page-container>
+      <router-view />
+    </q-page-container>
+
+    <!-- <div class="sectionTria">
+      <img
+        src="~assets/svg/svgtria1.svg"
+        alt=""
+      >
+      <img
+        src="~assets/svg/svgtria2.svg"
+        alt=""
+      >
+    </div> -->
+  </q-layout>
+</template>
+
+<script>
+export default {
+  data () {
+    return {
+      left: true
+    }
+  }
+}
+</script>
+
+<style>
+.fireJie {
+  height: 718px;
+  pointer-events: none;
+  position: absolute;
+  right: 0px;
+  top: 133px;
+  width: 568px;
+}
+.fireJie img {
+  height: 718px;
+  position: absolute;
+  width: 568px;
+}
+.fireJieDrawer {
+  background-repeat: no-repeat;
+  background-position: right bottom;
+  background-size: 100% 100%;
+  background-color: #039be5;
+  background-image: url("~assets/fireImg/grain@2x.png");
+}
+</style>

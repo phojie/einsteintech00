@@ -1,0 +1,492 @@
+<template>
+  <q-page class="q-pa-md-xl q-pa-none-xs">
+    <div
+      v-if="!showStudInfo"
+      class="full-width  text-center text-bold text-h2 q-mb-lg"
+    >
+      <div class="text-center">
+        <div
+          @click="onDecode"
+          class="text-bold text-h1 "
+          style="font-size:150px;font-family: 'Marko One', serif;"
+        >
+          <span>😍</span>
+          Login here
+          <br>
+          <q-chip
+            square
+            class="text-h3 text-bold q-pa-xl"
+            color="transparent"
+            text-color="blue-9"
+            icon="alarm"
+            :label="now.date + ' ' + now.time"
+          />
+        </div>
+
+        <q-separator inset></q-separator>
+        <!-- <q-separator
+          inset
+          class="transparent"
+          spaced
+        ></q-separator>
+        <div
+          @click="showstream != showstream"
+          class="text-bold "
+          style="font-family: 'Marko One', serif;"
+        >
+          <div class="text-h6">
+            {{now.date}}
+          </div>
+          <div class="text-h5 text-bold">
+            {{now.time}}
+          </div>
+        </div> -->
+
+        <q-card-section>
+
+          <div class="q-mt-lg text-weight-bold">
+            <q-avatar size="80px">
+              <img
+                src="~assets/jieIcons/apple-touch-icon-180x180.png"
+                alt=""
+              >
+            </q-avatar>
+            COLLEGE LIBRARY DEPARTMENT
+          </div>
+          <div class="text-h5 text-weight-bold">
+            SCHEDULE OF SIGNING OF CLEARANCE
+          </div>
+          <div class="text-h6 text-weight-bold">
+            1st semester S.Y 2019 - 2020
+          </div>
+
+          <q-input
+            autofocus
+            style="width:0px;"
+            v-model="test"
+            ref="tester"
+          ></q-input>
+
+        </q-card-section>
+        <div class="q-pa-md row justify-center q-gutter-md ">
+          <div class="column wrap justify-center items-center content-center q-px-md q-pb-md col-3 shadow-2 q-gutter-y-xs">
+            <q-card class="full-width my-card bg-blue-10 q-pa-lg text-white">
+              <q-card-section class="">
+                <div class="text-h3 text-weight-bold">COLLEGE OF EDUCATION</div>
+                <div class="text-h6">THURSDAY OCTOBER 10, 2019</div>
+              </q-card-section>
+            </q-card>
+            <q-card class="full-width my-card bg-purple-7 q-pa-lg text-white">
+              <q-card-section>
+                <div class="text-h3 text-weight-bold">COLLEGE OF CRIMINOLOGY</div>
+                <div class="text-h6">FRIDAY OCTOBER 11, 2019</div>
+              </q-card-section>
+            </q-card>
+            <q-card class="full-width my-card bg-yellow-10 q-pa-lg text-white">
+              <q-card-section>
+                <div class="text-h3 text-weight-bold">COLLEGE OF BUSINESS ADMINISTRATION</div>
+                <div class="text-h6">MONDAY OCTOBER 14, 2019</div>
+              </q-card-section>
+            </q-card>
+            <q-card class="full-width my-card bg-green-10 q-pa-lg text-white">
+              <q-card-section>
+                <div class="text-h3 text-weight-bold">COLLEGE OF COMPUTER SCIENCE</div>
+                <div class="text-h6">TUESDAY OCTOBER 15, 2019</div>
+              </q-card-section>
+            </q-card>
+          </div>
+          <div class="col-8">
+            <q-card>
+              <q-card-section class="row">
+                <div class="col-7">
+                  <div class="text-h5 text-left text-bold">Requirements</div>
+                  <div>
+                    <ul class="text-h4 text-left">
+                      <li> Library Card (with 1x1 ID Picture </li>
+                      <li>
+                        Penalties
+                        <ul>
+                          <li>Penalties will be settled at <span class="text-red">Finance Office</span></li>
+                          <li>Just bring your O.R from <span class="text-red">Finance Office</span></li>
+                        </ul>
+                      </li>
+                      <li>Library Tasks
+                        <ul>
+                          <li class="text-blue-10 text-bold"> Arranging and cleaning all books of the shelves (BED & COLLEGE LIB)</li>
+                          <li class="text-purple-10 text-bold"> Cleaning tables and chairs (BED & COLLEGE LIB)</li>
+                          <li class="text-yellow-10 text-bold"> Cleaning windows, floors, ceiling fan, walls, cubicle, doors & baggage area (BED & COLLEGE LIB)</li>
+                          <li class="text-green-10 text-bold"> Cleaning of E-Lib section, Bulletin board & stairs </li>
+                        </ul>
+                      </li>
+
+                    </ul>
+                  </div>
+                </div>
+
+                <div
+                  class="col-5 q-px-lg"
+                  style="border-left : 1px solid #b0bec5"
+                 >
+                  <div class="text-h5 text-left text-bold">Students with Penalties</div>
+                  <ol class="text-h4 text-bold text-left">
+                    <!-- <li class="text-yellow-10">Sumile, Ferlyn Maegan T. --- <span class="text-red text-bold">₱ 200</span></li> -->
+                    <li class="text-blue-10">Dela Cruz, Cheri Joy J. --- <span class="text-red text-bold">₱ 200</span></li>
+                    <!-- <li class="text-blue-10">Sacare, Ladyly --- <span class="text-red text-bold">₱ 200</span></li> -->
+                    <li class="text-purple-10">Dinawanao, Jessa --- <span class="text-red text-bold">₱ 150</span></li>
+                    <!-- <li class="text-blue-10">Krister Alguso --- <span class="text-red text-bold">₱ 5</span></li> -->
+                    <li class="text-blue-10">Mary Ailene C. Burgos --- <span class="text-red text-bold">₱ 5</span></li>
+                    <!-- <li class="text-blue-10 text-strike">Shelly J. Arnoco --- <span class="text-red text-bold">₱ 30</span></li> -->
+                    <!-- <li class="text-strike text-blue-10">Buletic, Christine Joy --- <span class="text-red text-bold">₱ 150</span></li> -->
+                    <!-- <li class="text-strike text-blue-10">Cajeta, Jessa --- <span class="text-red text-bold">₱ 150</span></li> -->
+                    <!-- <li class="text-blue-10">Capua, James --- <span class="text-red text-bold">₱ 150</span></li> -->
+                    <!-- <li class="text-blue-10 text-strike">Navarro, Faith --- <span class="text-red text-bold"> ... </span></li> -->
+                    <!-- <li class="text-strike text-blue-10">Sapong, Bebelyn --- <span class="text-red text-bold">₱ 130</span></li> -->
+                    <!-- <li class="text-blue-10 text-strike">Verallo, Kathlyn Queen --- <span class="text-red text-bold">₱ 60</span></li> -->
+                    <li class="text-blue-10">Galenzoga, Jomal Mark --- <span class="text-red text-bold">₱ 100</span></li>
+                    <!-- <li class="text-strike text-blue-10">Jenoctan, Jona G. --- <span class="text-red text-bold">₱ 50</span></li> -->
+                    <!-- <li class="text-blue-10 text-strike">Balambao, Rosie Jean --- <span class="text-red text-bold">₱ 150</span></li> -->
+                    <!-- <li class="text-strike text-purple-10">Segovia, Secagree A. --- <span class="text-red text-bold">₱ 5</span></li> -->
+                    <li class="text-blue-10">Cabando, Novenal A. --- <span class="text-red text-bold">₱ 300</span></li>
+                  </ol>
+                </div>
+
+              </q-card-section>
+            </q-card>
+          </div>
+          <!-- <q-card class="my-card col-5 bg-blue-10 text-white">
+
+            <q-card-section>
+              <div class="text-h5 text-weight-bold">COLLEGE OF EDUCATION</div>
+              <div class="text-subtitle2">THURSDAY OCTOBER 10, 2019</div>
+              <q-separator
+                dark
+                spaced
+                inset
+              />
+              <div class="text-subtitle2"> List of Student Penalties</div>
+              <div class="q-pa-md text-h6">
+                <ol>
+                  <li>Dela Cruz, Cheri Joy J.</li>
+                </ol>
+
+              </div>
+            </q-card-section>
+          </q-card>
+          <q-card class="my-card col-5 bg-purple-10 text-white">
+            <q-card-section>
+              <div class="text-h5 text-weight-bold">COLLEGE OF CRIMINOLOGY</div>
+              <div class="text-subtitle2">THURSDAY OCTOBER 11, 2019</div>
+            </q-card-section>
+          </q-card>
+          <q-card class="my-card col-5 bg-yellow-10 text-white">
+            <q-card-section>
+              <div class="text-h5 text-weight-bold">COLLEGE OF BUSINESS ADMINISTRATION</div>
+              <div class="text-subtitle2">THURSDAY OCTOBER 14, 2019</div>
+            </q-card-section>
+          </q-card>
+          <q-card class="my-card col-5 bg-green-10 text-white">
+            <q-card-section>
+              <div class="text-h5 text-weight-bold">COLLEGE OF COMPUTER SCIENCE</div>
+              <div class="text-subtitle2">THURSDAY OCTOBER 15, 2019</div>
+            </q-card-section>
+          </q-card> -->
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div
+      v-if="showStudInfo"
+      @click="onDecode()"
+      class="text-center text-bold text-h2 q-mb-lg"
+      style="font-family: 'Marko One', serif;"
+    >
+      Library Statistics
+      <span>📈</span>
+      <q-separator
+        inset
+        spaced=""
+      ></q-separator>
+    </div>
+
+    <transition
+      enter-active-class="animated rotateIn"
+      leave-active-class="animated zoomOut"
+    >
+      <q-card
+        v-if="showStudInfo"
+        bordered
+        class="col-9 q-pa-lg q-mt-xl row shadow-1"
+      >
+        <div class="full-width row wrap justify-center items-center content-center">
+          <div class="col-md-6 col-sm-12 row justify-center items-center content-center">
+            <q-circular-progress
+              show-value
+              font-size="10px"
+              class="q-ma-md"
+              :value="65"
+              size="320px"
+              :thickness="0.25"
+              color="transparent"
+              track-color="transparent"
+            >
+              <q-avatar
+                class="shadow-3"
+                size="300px"
+              >
+                <img :src="studentInformationForm.profileImgUrl">
+              </q-avatar>
+            </q-circular-progress>
+          </div>
+          <div class="col-md-6 col-sm-12">
+            <div class="text-h4 text-bold">
+              Welcome
+            </div>
+            <div class="text-h3 text-bold text-capitalize">
+              {{studentInformationForm.firstname + ' ' + studentInformationForm.surname}}
+            </div>
+            <q-separator
+              inset
+              spaced
+            ></q-separator>
+            <div class="text-h2 text-bold text-primary">
+              {{studentInformationForm.idnumber}}
+            </div>
+            <div class="text-h5 text-bold">{{studentInformationForm.course}}</div>
+          </div>
+        </div>
+      </q-card>
+    </transition>
+
+    <qrcodereader
+      @onInit="onInit"
+      @onDecode="onDecode"
+      :result.sync="result"
+      :error.sync="error"
+      v-if="showstream"
+    />
+
+    <q-dialog v-model="dialogIdtyper">
+      <q-card
+        style="width:500px"
+        class="q-pa-lg"
+      >
+        <q-toolbar>
+          <q-avatar square>
+            <img src="https://img.icons8.com/ios-filled/50/000000/security-pass.png">
+          </q-avatar>
+
+          <q-toolbar-title class="text-h6">Enter your <span class="text-weight-bold ">ID NUMBER</span> </q-toolbar-title>
+
+        </q-toolbar>
+
+        <q-card-section>
+          <q-input
+            autofocus=""
+            input-class="text-h3 text-bold text-center"
+            standout="bg-primary text-white"
+            v-model="test"
+            mask="#### - ####"
+            class="text-weight-bold "
+          />
+
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
+    <!-- <img src="https://firebasestorage.googleapis.com/v0/b/einstein00-cf6cc.appspot.com/o/images%2F2ynRormG3d7cNXJKZoV3?alt=media&token=f48ac41b-c87d-48dd-9f25-9dd1226d2a56"> -->
+
+  </q-page>
+</template>
+
+<script>
+import { mapGetters, mapActions } from 'vuex'
+import find from 'lodash/find'
+import replace from 'lodash/replace'
+import { date } from 'quasar'
+// import moment from 'moment'
+
+export default {
+  components: {
+    'qrcodereader': require('components/qrcodeReader/qrcodereader1.vue').default
+    // 'libraryQrLoginCarousel': require('components/carousel/libraryQrcodelogin.vue').default
+  },
+  data () {
+    return {
+      slide: 1,
+      test: '',
+      showstream: false,
+      now: {
+        time: '',
+        date: '',
+        local: ''
+      },
+      result: '',
+      error: '',
+      value: 50,
+      dialog1: true,
+      showStudInfo: false,
+      studentInformationForm: {
+        firstname: '',
+        middlename: '',
+        surname: '',
+        idnumber: '',
+        keyIndex: '',
+        course: '',
+        profileImgUrl: '',
+        fullname: ''
+      }
+    }
+  },
+  computed: {
+    ...mapGetters('admin', ['studentLists2']),
+    dialogIdtyper () {
+      let dialog = Boolean
+      if (this.test !== '') {
+        dialog = true
+      } else {
+        dialog = false
+        console.log(this.$refs)
+      }
+      return dialog
+    }
+  },
+  methods: {
+    ...mapActions('admin', ['addLibraryStat']),
+    eventTake (event) {
+      console.log(event)
+    },
+    showNotif (data) {
+      var take0 = data[0]
+      this.$q.notify({
+        color: take0.color,
+        textColor: 'white',
+        multiline: true,
+        timeout: 1500,
+        html: true,
+        message: take0.message,
+        avatar: 'https://cdn.quasar.dev/img/boy-avatar.png'
+      })
+    },
+    addStat (data) {
+      let vm = this
+      let createdInfo = {
+        idnumber: this.studentInformationForm.keyIndex,
+        time: this.now
+      }
+      this.addLibraryStat(createdInfo).then(function (result) {
+        var options = []
+        options.push({
+          message: `Successfully Login, <br> <span class="text-capitalize">Have a nice day ${data.firstname}! </span> `,
+          color: 'light-green-8'
+        })
+
+        setTimeout(function () {
+          vm.showStudInfo = false
+          vm.studentInformationForm = {
+            firstname: '',
+            middlename: '',
+            surname: '',
+            idnumber: '',
+            keyIndex: '',
+            course: '',
+            profileImgUrl: ''
+          }
+        }, 5000)
+
+        vm.showNotif(options)
+      }, function (error) {
+        console.log(error)
+      })
+    },
+    DecodeSuccess (data) {
+      this.showStudInfo = true
+      this.studentInformationForm = {
+        firstname: data.firstname,
+        middlename: data.middlename,
+        surname: data.surname,
+        idnumber: data.idnumber,
+        keyIndex: data.keyIndex,
+        course: data.course,
+        profileImgUrl: data.profileImgUrl
+      }
+
+      this.addStat(data)
+    },
+    DecodeError () {
+      console.log('error')
+      // var audioerror = new Audio('/statics/ringtone/suspense-message-2.mp3')
+      // audioerror.play()
+    },
+    onDecode (result) {
+      result = 'PHOJIEMONEX - 2019 - 0310'
+      this.showStudInfo = false
+
+      this.result = result
+      var idNUmber = replace(this.result, 'PHOJIEMONEX - ', '')
+      var indexData = find(this.studentLists2, ['idnumber', idNUmber])
+      // alert(idNUmber, indexData)
+      if (indexData !== undefined) {
+        // alert(idNUmber)
+        // console.log(indexData)
+        // var sound = '/statics/ringtone/notification.mp3'
+        var audio = new Audio('/statics/ringtone/notification.mp3')
+        audio.play()
+        this.DecodeSuccess(indexData)
+      } else {
+        this.DecodeError()
+      }
+      // console.log(indexData)
+      // console.log(this.studentLists2)
+    },
+
+    async onInit (promise) {
+      try {
+        await promise
+      } catch (error) {
+        if (error.name === 'NotAllowedError') {
+          this.error = 'ERROR: you need to grant camera access permisson'
+        } else if (error.name === 'NotFoundError') {
+          this.error = 'ERROR: no camera on this device'
+        } else if (error.name === 'NotSupportedError') {
+          this.error = 'ERROR: secure context required (HTTPS, localhost)'
+        } else if (error.name === 'NotReadableError') {
+          this.error = 'ERROR: is the camera already in use?'
+        } else if (error.name === 'OverconstrainedError') {
+          this.error = 'ERROR: installed cameras are not suitable'
+        } else if (error.name === 'StreamApiNotSupportedError') {
+          this.error = 'ERROR: Stream API is not supported in this browser'
+        }
+      } finally {
+        // hide loading
+      }
+    }
+  },
+  created () {
+    let vm = this
+    setInterval(function () {
+      let timeStamp = new Date()
+      let local = timeStamp.setHours(timeStamp.getHours() - 1)
+      // .SSSZ
+      let formattedTime = date.formatDate(local, 'hh:mm:ssa')
+      let formattedDate = date.formatDate(local, 'MMMM Do YYYY')
+      vm.now.time = formattedTime
+      vm.now.date = formattedDate
+      vm.now.local = local
+      // let date1 = new Date(1570222200202)
+      // let date2 = date.formatDate(date1, 'hh:mm:ssa')
+      // console.log(date2)
+    }, 1000)
+  }
+}
+</script>
+
+<style lang="stylus">
+.bgPh {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url('https://cdn-images-1.medium.com/max/800/1*hTwl4OGQJtoR3yOSYXCmmg.gif');
+}
+</style>

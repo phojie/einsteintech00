@@ -1,0 +1,15 @@
+  <!-- <q-img
+                  class=""
+                  :src="url"
+                  transition="slide-down"
+                  spinner-color="white"
+                  style="border-radius:5px;height: 150px; width: 180px"
+                >
+
+                  <q-btn
+                    round
+                    class=" absolute-bottom-right text-white bg-primary"
+                    @click="test('upload')"
+                    icon="add_photo_alternate"
+                  />
+                </q-img> -->
