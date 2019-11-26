@@ -29,7 +29,7 @@
           />
           <q-carousel-slide
             :name="5"
-            class="imgsrc4"
+            class="imgsrc5"
           />
         </q-carousel>
       </q-page>
