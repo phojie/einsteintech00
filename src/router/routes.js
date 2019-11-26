@@ -46,6 +46,10 @@ const routes = [
   {
     path: '/nbw',
     component: () => import('pages/publicArea/libraryPublic/NBW.vue')
+  },
+  {
+    path: '/QBelen',
+    component: () => import('pages/publicArea/libraryPublic/QBelem.vue')
   }
   // {
   //   path: '/libraryLoginQR',
