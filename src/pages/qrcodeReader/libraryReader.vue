@@ -125,7 +125,7 @@
               <div class="q-mt-md text-bold">
                 <div class="text-justify">
                   Hello <span class="text-deep-orange">Ckcmians</span>, This week is the celebration of the <span class="bg-blue text-white">National Book Week.</span> Starting Today November 26, 2019 until November 29, 2019 we will be having some activities for every departments and we encourage everyone to participate.
-                  And Please be informed that the <span class="bg-red text-white"> registration of Id in the library is needed</span> for the Pool voting of the said event thank you! 💛.
+                  And Please be informed that the <span class="bg-red text-white"> registration of Id in the library is needed</span> for the Poll voting of the said event thank you! 💛.
                 </div>
               </div>
               <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laborum voluptatum, quas sapiente ad minima molestias voluptates nisi repellendus, ex ut nihil aliquid nostrum at exercitationem suscipit aliquam optio atque. -->
