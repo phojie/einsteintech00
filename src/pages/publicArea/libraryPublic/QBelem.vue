@@ -7,7 +7,7 @@
           animated
           v-model="slide"
           infinite
-          :autoplay=15000
+          :autoplay=25000
           fullscreen
         >
           <q-carousel-slide
@@ -50,27 +50,27 @@ export default {
 
 <style>
 .imgsrc {
-  background-image: url("/statics/God/Q1.png");
+  background-image: url("/statics/God/Q6.jpg");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .imgsrc2 {
-  background-image: url("/statics/God/Q2.png");
+  background-image: url("/statics/God/Q7.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .imgsrc3 {
-  background-image: url("/statics/God/Q3.png");
+  background-image: url("/statics/God/Q8.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .imgsrc4 {
-  background-image: url("/statics/God/Q4.png");
+  background-image: url("/statics/God/Q9.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
 .imgsrc5 {
-  background-image: url("/statics/God/Q5.png");
+  background-image: url("/statics/God/Q10.png");
   background-size: 100% 100%;
   background-repeat: no-repeat;
 }
