@@ -161,12 +161,12 @@
                   class="col-12 text-center"
                   style="margin-top:-40px"
                 >
-                  <h2 class="text-weight-bolder text-blue-grey-9">sempiternal</h2>
+                  <h2 class="text-weight-bolder text-blue-grey-9">retinue</h2>
                   <h5
                     class="text-body1 text-blue-9"
                     style="margin-top:-50px"
                   >
-                    <span class="text-italic">adjective</span> | sem-pih-TER-nul
+                    <span class="text-italic">noun</span> | RET-uh-noo
                   </h5>
                 </div>
               </div>
@@ -174,11 +174,11 @@
               <div>
                 <q-toolbar-title class="text-h5 text-blue-9 text-bold">Definition</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  : of never-ending duration : eternal
+                  : a group of retainers or attendants
                 </p>
                 <q-toolbar-title class="q-pa-none text-h5 text-blue-9 text-bold">Example</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  "For those who don't ride public transit and for most of their adulthoods travel via automobile between a few tightly curated situations ... Bourbon Street's sempiternal carnival gives them unmediated contact with all sorts of people they might not otherwise encounter." <span class="text-blue-7">— Jules Bentley, The Advocate (Baton Rouge, Louisiana), 20 Aug. 2018</span>
+                  "Russian mezzo-soprano Alisa Kolosova, as the duchess who fully expects to marry Rodolfo, enjoyed the Entrance of Entrances, high on the statue of a horse, dressed in royal velvet, and surrounded by a retinue of similarly dressed minions."<span class="text-blue-7">— Nancy Malitz, The Chicago Sun-Times, 13 Oct. 2019</span>
                 </p>
               </div>
             </q-card-section>
