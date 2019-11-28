@@ -161,12 +161,12 @@
                   class="col-12 text-center"
                   style="margin-top:-40px"
                 >
-                  <h2 class="text-weight-bolder text-blue-grey-9">retinue</h2>
+                  <h2 class="text-weight-bolder text-blue-grey-9">fawn</h2>
                   <h5
                     class="text-body1 text-blue-9"
                     style="margin-top:-50px"
                   >
-                    <span class="text-italic">noun</span> | RET-uh-noo
+                    <span class="text-italic">verb</span> | Fawn
                   </h5>
                 </div>
               </div>
@@ -174,11 +174,13 @@
               <div>
                 <q-toolbar-title class="text-h5 text-blue-9 text-bold">Definition</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  : a group of retainers or attendants
+                  1 : to court favor by a cringing or flattering manner
+                  <br>
+                  2 : to show affection — used especially of a dog
                 </p>
                 <q-toolbar-title class="q-pa-none text-h5 text-blue-9 text-bold">Example</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  "Russian mezzo-soprano Alisa Kolosova, as the duchess who fully expects to marry Rodolfo, enjoyed the Entrance of Entrances, high on the statue of a horse, dressed in royal velvet, and surrounded by a retinue of similarly dressed minions."<span class="text-blue-7">— Nancy Malitz, The Chicago Sun-Times, 13 Oct. 2019</span>
+                "Like tech C.E.O.s today, Edison attracted an enormous following, both because his inventions fundamentally altered the texture of daily life and because he nurtured a media scrum that fawned over every inch of his laboratory and fixated on every minute of his day."<span class="text-blue-7">— — Casey Cep, The New Yorker, 28 Oct. 2019</span>
                 </p>
               </div>
             </q-card-section>
