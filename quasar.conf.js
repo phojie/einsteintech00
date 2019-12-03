@@ -96,7 +96,9 @@ module.exports = function (ctx) {
         'QCircularProgress',
         'QCarousel',
         'QCarouselControl',
-        'QCarouselSlide'
+        'QCarouselSlide',
+        'QParallax',
+        'QOptionGroup'
       ],
 
       directives: ['Ripple', 'ClosePopup'],
@@ -218,4 +220,4 @@ module.exports = function (ctx) {
       }
     }
   }
-}
+};

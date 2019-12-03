@@ -124,8 +124,6 @@
               </q-toolbar-title>
               <div class="q-mt-md text-bold">
                 <div class="text-justify">
-                  Hello <span class="text-deep-orange">Ckcmians</span>, This week is the celebration of the <span class="bg-blue text-white">National Book Week.</span> Starting Today November 26, 2019 until November 29, 2019 we will be having some activities for every departments and we encourage everyone to participate.
-                  And Please be informed that the <span class="bg-red text-white"> registration of Id in the library is needed</span> for the Poll voting of the said event thank you! 💛.
                 </div>
               </div>
               <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laborum voluptatum, quas sapiente ad minima molestias voluptates nisi repellendus, ex ut nihil aliquid nostrum at exercitationem suscipit aliquam optio atque. -->
@@ -161,12 +159,12 @@
                   class="col-12 text-center"
                   style="margin-top:-40px"
                 >
-                  <h2 class="text-weight-bolder text-blue-grey-9">fawn</h2>
+                  <h2 class="text-weight-bolder text-blue-grey-9">bon vivant</h2>
                   <h5
                     class="text-body1 text-blue-9"
                     style="margin-top:-50px"
                   >
-                    <span class="text-italic">verb</span> | Fawn
+                    <span class="text-italic">noun</span> | bahn-vee-VAHNT
                   </h5>
                 </div>
               </div>
@@ -174,13 +172,15 @@
               <div>
                 <q-toolbar-title class="text-h5 text-blue-9 text-bold">Definition</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  1 : to court favor by a cringing or flattering manner
-                  <br>
-                  2 : to show affection — used especially of a dog
+                  : a sociable person who has cultivated and refined tastes especially with respect to food and drink
                 </p>
                 <q-toolbar-title class="q-pa-none text-h5 text-blue-9 text-bold">Example</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                "Like tech C.E.O.s today, Edison attracted an enormous following, both because his inventions fundamentally altered the texture of daily life and because he nurtured a media scrum that fawned over every inch of his laboratory and fixated on every minute of his day."<span class="text-blue-7">— — Casey Cep, The New Yorker, 28 Oct. 2019</span>
+                  "The Major was somewhat of a bon vivant, and his wine was excellent." <span class="text-blue-7"> —— Sir Walter Scott, Waverley, 1814</span>
+                </p>
+                <br>
+                <p class="text-subtitle1 text-blue-grey-10">
+                  "The Swiss-born chef and bon vivant saw life through rose-colored beer glasses, preferring to keep negativity at bay by drinking, eating, laughing, loving and yodeling."<span class="text-blue-7"> — Mike Hale, The Monterey (California) County Herald, 4 Sept. 2019</span>
                 </p>
               </div>
             </q-card-section>
@@ -215,7 +215,7 @@
               size="200px"
               class="q-mr-md"
             >
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQfDmyjlcV-pv8AuHJaT8A9UrqPDswTYGPo-ofRN2rNcxkPIlFt">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Noto_Emoji_KitKat_263a.svg/1200px-Noto_Emoji_KitKat_263a.svg.png">
             </q-avatar>
             <div class="col">
               <span class="text-red text-h6">Question: </span> <br>

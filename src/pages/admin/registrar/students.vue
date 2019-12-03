@@ -202,6 +202,7 @@
         @submitAddStudent="submitAddStudent"
         @added="addPhoto"
         :options="options"
+        :LRNnumber.sync="studentInformationForm.LRNnumber"
         :idnumber.sync="studentInformationForm.idnumber"
         :firstname.sync="studentInformationForm.firstname"
         :middlename.sync="studentInformationForm.middlename"
@@ -242,15 +243,15 @@
       >
         <template slot="headerTitle">Edit Profile</template>
         <template slot="dialogBtn">
-  <q-btn
-    color="primary"
-    label="Update"
-    @click="submitUpdateStudent"
-    :loading="loading"
-    :disable="jie1"
-    class="full-width q-mt-lg"
-  />
-</template>
+          <q-btn
+            color="primary"
+            label="Update"
+            @click="submitUpdateStudent"
+            :loading="loading"
+            :disable="jie1"
+            class="full-width q-mt-lg"
+          />
+        </template>
       </studentsFormModal>
     </q-dialog>
 
@@ -286,6 +287,7 @@ export default {
             resolve(typeof value === 'string' && value.length % 2 !== 0)
           })
         }
+
       },
       course: { required },
       profileImgUrl: ''
@@ -344,6 +346,7 @@ export default {
         middlename: '',
         surname: '',
         idnumber: '',
+        LRNnumber: '',
         keyIndex: '',
         course: '',
         profileImgUrl: '',
@@ -354,6 +357,7 @@ export default {
         middlename: '',
         surname: '',
         idnumber: '',
+        LRNnumber: '',
         keyIndex: '',
         course: '',
         profileImgUrl: '',
@@ -363,10 +367,9 @@ export default {
       updateStudentDialog: false,
       model: null,
       options: [
-        'Business Administration', 'Criminology', 'Computer Science', 'Secondary Education', 'Elementary Education'
+        'Junior High', 'Senior High', 'Business Administration', 'Criminology', 'Computer Science', 'Secondary Education', 'Elementary Education'
       ],
       url: 'https://threadreaderapp.com/images/avatars/unknown.jpg'
-
     }
   },
   computed: {
@@ -533,6 +536,7 @@ export default {
 
       if (this.$v.studentInformationForm.$invalid) {
         this.$v.studentInformationForm.$touch()
+        console.log(this.$v.studentInformationForm)
       } else {
         this.addStudentLists(this.studentInformationForm).then(function (result) {
           var fullname = `${vm.studentInformationForm.firstname} ${vm.studentInformationForm.middlename.charAt(0)}. ${vm.studentInformationForm.surname}`

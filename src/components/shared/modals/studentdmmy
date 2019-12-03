@@ -66,6 +66,39 @@
                 Student Program is required to fill
               </template>
             </q-select>
+            {{studentInformationForm.idnumber}}
+            <q-input
+              outlined
+              dense
+              :value="studentInformationForm.LRNnumber"
+              @change="setLRNnumber($event.target.value)"
+              label="LRN number"
+              ref="refLRNnumber"
+              class="col-10"
+              v-if="studentInformationForm.course === 'Junior High' || studentInformationForm.course === 'Senior High'"
+              mask="###################"
+              hide-bottom-space
+              :error="validations.idnumber.$error"
+            >
+              <template
+                v-slot:error
+                v-if="!validations.idnumber.required"
+              >
+                Lrn number is required
+              </template>
+              <template
+                v-slot:error
+                v-else-if="!validations.LRNnumber.minLength"
+              >
+                Please enter a valid LRN number
+              </template>
+              <template
+                v-slot:error
+                v-else-if="!validations.LRNnumber.isUnique"
+              >
+                ID already registered
+              </template>
+            </q-input>
 
             <q-input
               outlined
@@ -75,6 +108,7 @@
               label="Id number"
               ref="refIdnumber"
               class="col-10"
+              v-else
               mask="#### - ####"
               hide-bottom-space
               :error="validations.idnumber.$error"
@@ -195,6 +229,12 @@ export default {
       console.log(this.validations.idnumber.required)
       this.$emit('update:idnumber', event)
       this.validations.idnumber.$touch()
+    },
+    setLRNnumber (event) {
+      this.setIdnumber('6969 - 6969')
+      console.log(this.validations.LRNnumber.required)
+      this.$emit('update:LRNnumber', event)
+      this.validations.LRNnumber.$touch()
     }
   }
 }

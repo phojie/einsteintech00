@@ -50,6 +50,10 @@ const routes = [
   {
     path: '/QBelem',
     component: () => import('pages/publicArea/libraryPublic/QBelem.vue')
+  },
+  {
+    path: '/poll',
+    component: () => import('pages/publicArea/libraryPublic/pollvote.vue')
   }
   // {
   //   path: '/libraryLoginQR',
