@@ -214,9 +214,11 @@ export function updateStudentLists (context, payload) {
 }
 
 export function addLibraryStat (context, payload) {
+  console.log(payload)
   return new Promise((resolve, reject) => {
+    console.log('testya')
     let docRef = fireDB
-      .collection('Library/uyM3J8XUI1aI4dDm0reC/Statistics')
+      .collection('Library/uyM3J8XUI1aI4dDm0reC/Statisticshay')
       .doc()
     // let docRef = LibraryDB.collection('Statistics').doc('test').doc()
     let myId = docRef.id
@@ -238,7 +240,7 @@ export function getLibraryStat (context, payload) {
   return new Promise(function (resolve, reject) {
     // fireDB.collection('studentLists').onSnapshot({ includeMetadataChanges: true }, function (snapshot) {
     fireDB
-      .collection('Library/uyM3J8XUI1aI4dDm0reC/Statistics')
+      .collection('Library/uyM3J8XUI1aI4dDm0reC/Statisticshay')
       .onSnapshot({ includeMetadataChanges: true }, function (snapshot) {
         snapshot.docChanges().forEach(
           function (change) {
@@ -248,7 +250,7 @@ export function getLibraryStat (context, payload) {
                 id: change.doc.data().keyIndex,
                 information: change.doc.data()
               }
-
+              console.log('test')
               context.commit('commitGetLibraryStat', data)
               resolve()
             }
@@ -279,7 +281,7 @@ export function deleteStatistics (context, payload) {
   console.log(payload)
   return new Promise((resolve, reject) => {
     fireDB
-      .collection('Library/uyM3J8XUI1aI4dDm0reC/Statistics')
+      .collection('Library/uyM3J8XUI1aI4dDm0reC/Statisticshay')
       .doc(payload.createdIndex)
       .delete()
       .then(function () {

@@ -540,6 +540,7 @@ export default {
         time: this.now
       }
       this.addLibraryStat(createdInfo).then(function (result) {
+        console.log(createdInfo)
         var options = []
         options.push({
           message: `Successfully Login, <br> <span class="text-capitalize">Have a nice day ${data.firstname}! </span> `,

@@ -20,6 +20,7 @@ export function commitLoadingProgress (state, payload) {
 
 export function commitGetLibraryStat (state, payload) {
   var myData = state.studentLists[payload.information.idnumber]
+  console.log(myData)
   var data = {
     createdIndex: payload.information.keyIndex,
     date: payload.information.created.date,
