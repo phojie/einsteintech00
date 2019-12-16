@@ -7,6 +7,8 @@
         <div class="row q-mt-xs col-6 text-subtitle2">
           Opening Hours:
           <marquee width="80%">The library is open from <span class="bg-red">Monday to Friday</span> from 7:30 in the morning until 5:30 o'clock in the afternoon; <span class="bg-red">half day of Saturday</span></marquee>
+          <!-- <marquee width="80%"> IF YOUR NAME START WITH LETTER J, <span class="bg-white text-green-8 text-bold"> YOU ARE WELCOME TO THE LIBRARY</span> </marquee> -->
+          <span class="text-orange"></span>
         </div>
         <div class="q-ml-md text-weight-bold  ">
           <q-chip icon="alarm">

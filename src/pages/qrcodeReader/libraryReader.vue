@@ -21,6 +21,7 @@
       >
         <div class="full-width row wrap justify-center items-center content-center">
           <div class="col-md-4 col-sm-12 row justify-center items-center content-center">
+
             <q-circular-progress
               show-value
               font-size="10px"
@@ -31,14 +32,135 @@
               :color="getColor(studentInformationForm.course)"
               track-color="transparent"
             >
+
               <q-avatar size="320px">
                 <img :src="studentInformationForm.profileImgUrl">
               </q-avatar>
-
             </q-circular-progress>
 
           </div>
-          <div class="col-md-auto col-sm-12">
+          <div
+            v-if="studentInformationForm.idnumber === '2019 - 0111'"
+            class="col-md-auto col-sm-12"
+          >
+            <div class="text-h4 text-bold text-orange-8">
+              Welcome TIM, FROM YOUR ADMIRER 😍😘
+            </div>
+            <div class="text-h2 text-weight-bolder text-capitalize text-blue-grey-10 ">
+              {{studentInformationForm.firstname + ' ' + studentInformationForm.surname}}
+            </div>
+            <q-separator
+              class="bg-blue-3"
+              style="height:10px"
+              spaced
+              v-if="studentInformationForm.course === 'Secondary education' || studentInformationForm.course === 'Elementary education'"
+            ></q-separator>
+            <q-separator
+              class="bg-purple-3"
+              style="height:10px"
+              v-else-if="studentInformationForm.course === 'Criminology' "
+              spaced
+            ></q-separator>
+            <q-separator
+              class="bg-yellow-3"
+              style="height:10px"
+              v-else-if="studentInformationForm.course === 'Business administration' "
+              spaced
+            ></q-separator>
+            <q-separator
+              class="bg-green-3"
+              style="height:10px"
+              v-else-if="studentInformationForm.course === 'Computer science' "
+              spaced
+            ></q-separator>
+            <div class="text-h2 text-bold text-blue-grey-10">
+              {{studentInformationForm.idnumber}}
+            </div>
+            <q-btn
+              class="text-h4 text-bold text-white bg-blue-10 q-mt-lg"
+              size="20px"
+              v-if="studentInformationForm.course === 'Secondary education' || studentInformationForm.course ===  'Elementary education'"
+            >{{studentInformationForm.course}}</q-btn>
+            <q-btn
+              class="text-h4 text-bold text-white bg-purple-10 q-mt-lg"
+              size="20px"
+              v-else-if="studentInformationForm.course === 'Criminology'"
+            >{{studentInformationForm.course}}</q-btn>
+            <q-btn
+              class="text-h4 text-bold text-white bg-yellow-10 q-mt-lg"
+              size="20px"
+              v-else-if="studentInformationForm.course === 'Business administration'"
+            >{{studentInformationForm.course}}</q-btn>
+            <q-btn
+              class="text-h4 text-bold text-white bg-green-10 q-mt-lg"
+              size="20px"
+              v-else-if="studentInformationForm.course === 'Computer science'"
+            >{{studentInformationForm.course}}</q-btn>
+          </div>
+
+          <div
+            v-else-if="studentInformationForm.idnumber === '2019 - 0320'"
+            class="col-md-auto col-sm-12"
+          >
+            <div class="text-h4 text-bold text-orange-8">
+              Welcome 🍆 💦
+            </div>
+            <div class="text-h2 text-weight-bolder text-capitalize text-blue-grey-10 ">
+              {{studentInformationForm.firstname + ' ' + studentInformationForm.surname}}
+            </div>
+            <q-separator
+              class="bg-blue-3"
+              style="height:10px"
+              spaced
+              v-if="studentInformationForm.course === 'Secondary education' || studentInformationForm.course === 'Elementary education'"
+            ></q-separator>
+            <q-separator
+              class="bg-purple-3"
+              style="height:10px"
+              v-else-if="studentInformationForm.course === 'Criminology' "
+              spaced
+            ></q-separator>
+            <q-separator
+              class="bg-yellow-3"
+              style="height:10px"
+              v-else-if="studentInformationForm.course === 'Business administration' "
+              spaced
+            ></q-separator>
+            <q-separator
+              class="bg-green-3"
+              style="height:10px"
+              v-else-if="studentInformationForm.course === 'Computer science' "
+              spaced
+            ></q-separator>
+            <div class="text-h2 text-bold text-blue-grey-10">
+              {{studentInformationForm.idnumber}}
+            </div>
+            <q-btn
+              class="text-h4 text-bold text-white bg-blue-10 q-mt-lg"
+              size="20px"
+              v-if="studentInformationForm.course === 'Secondary education' || studentInformationForm.course ===  'Elementary education'"
+            >{{studentInformationForm.course}}</q-btn>
+            <q-btn
+              class="text-h4 text-bold text-white bg-purple-10 q-mt-lg"
+              size="20px"
+              v-else-if="studentInformationForm.course === 'Criminology'"
+            >{{studentInformationForm.course}}</q-btn>
+            <q-btn
+              class="text-h4 text-bold text-white bg-yellow-10 q-mt-lg"
+              size="20px"
+              v-else-if="studentInformationForm.course === 'Business administration'"
+            >{{studentInformationForm.course}}</q-btn>
+            <q-btn
+              class="text-h4 text-bold text-white bg-green-10 q-mt-lg"
+              size="20px"
+              v-else-if="studentInformationForm.course === 'Computer science'"
+            >{{studentInformationForm.course}}</q-btn>
+          </div>
+
+          <div
+            v-else
+            class="col-md-auto col-sm-12"
+          >
             <div class="text-h4 text-bold text-orange-8">
               Welcome
             </div>
@@ -121,6 +243,11 @@
                   class=" text-weight-bold dense"
                   ref="dummytester"
                 />
+                <!-- <p class="q-mt-md text-subtitle2">
+                  <span class="text-purple">
+                    TO ALL STUDENT DON'T FORGET TO LOG IN 👀💖
+                  </span>
+                </p> -->
               </q-toolbar-title>
               <div class="q-mt-md text-bold">
                 <div class="text-justify">
@@ -159,12 +286,12 @@
                   class="col-12 text-center"
                   style="margin-top:-40px"
                 >
-                  <h2 class="text-weight-bolder text-blue-grey-9">bon vivant</h2>
+                  <h2 class="text-weight-bolder text-blue-grey-9">delectation</h2>
                   <h5
                     class="text-body1 text-blue-9"
                     style="margin-top:-50px"
                   >
-                    <span class="text-italic">noun</span> | bahn-vee-VAHNT
+                    <span class="text-italic">noun</span> | dee-lek-TAY-shun
                   </h5>
                 </div>
               </div>
@@ -172,15 +299,15 @@
               <div>
                 <q-toolbar-title class="text-h5 text-blue-9 text-bold">Definition</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  : a sociable person who has cultivated and refined tastes especially with respect to food and drink
+                  : delight, enjoyment
                 </p>
                 <q-toolbar-title class="q-pa-none text-h5 text-blue-9 text-bold">Example</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  "The Major was somewhat of a bon vivant, and his wine was excellent." <span class="text-blue-7"> —— Sir Walter Scott, Waverley, 1814</span>
+                  "All of Europe is in mourning for its past. Bookstores are stocked with albums of photographs offering up the vanished past for our delectation and reflex nostalgia." <span class="text-blue-7"> — Susan Sontag, Where the Stress Falls, 2001</span>
                 </p>
                 <br>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  "The Swiss-born chef and bon vivant saw life through rose-colored beer glasses, preferring to keep negativity at bay by drinking, eating, laughing, loving and yodeling."<span class="text-blue-7"> — Mike Hale, The Monterey (California) County Herald, 4 Sept. 2019</span>
+                  "Then it was on to the dining room for, among other delectations, Caesar salad, shrimp remoulade, turtle soup, Eggs Benedict, bread pudding and king cake French toast." <span class="text-blue-7"> — Nell Nolan, NOLA.com, 9 July 2019</span>
                 </p>
               </div>
             </q-card-section>
@@ -215,7 +342,7 @@
               size="200px"
               class="q-mr-md"
             >
-              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Noto_Emoji_KitKat_263a.svg/1200px-Noto_Emoji_KitKat_263a.svg.png">
+              <img src="https://i0.wp.com/stephenkneale.com/wp-content/uploads/2019/11/Knowledge20Head.png?fit=840%2C840&ssl=1">
             </q-avatar>
             <div class="col">
               <span class="text-red text-h6">Question: </span> <br>
@@ -540,7 +667,6 @@ export default {
         time: this.now
       }
       this.addLibraryStat(createdInfo).then(function (result) {
-        console.log(createdInfo)
         var options = []
         options.push({
           message: `Successfully Login, <br> <span class="text-capitalize">Have a nice day ${data.firstname}! </span> `,
