@@ -16,6 +16,10 @@ const routes = [
       {
         path: '/registrarStudents',
         component: () => import('pages/admin/registrar/students.vue')
+      },
+      {
+        path: '/registrarPersonnel',
+        component: () => import('pages/admin/registrar/personnel.vue')
       }
     ]
   },

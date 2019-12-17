@@ -148,9 +148,9 @@ export default {
           nameRoute: ''
         },
         {
-          title: 'Teachers',
+          title: 'Personnel',
           avatar: 'supervisor_account',
-          nameRoute: ''
+          nameRoute: '/registrarPersonnel'
         }
       ],
       libraryMenuList: [
