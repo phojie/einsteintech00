@@ -4,6 +4,11 @@ function studentLists (state) {
   return data
 }
 
+function personnelLists (state) {
+  var data = filter(state.personnelLists, 'keyIndex')
+  return data
+}
+
 function studentLists2 (state) {
   return state.studentLists
 }
@@ -20,4 +25,4 @@ function libraryStat (state) {
   return data
 }
 
-export { libraryStat, studentLists, loading, loadingProgress, studentLists2 }
+export { libraryStat, studentLists, loading, loadingProgress, studentLists2, personnelLists }

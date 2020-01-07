@@ -20,7 +20,7 @@ export function commitLoadingProgress (state, payload) {
 
 export function commitGetLibraryStat (state, payload) {
   var myData = state.studentLists[payload.information.idnumber]
-  console.log(myData)
+  // console.log(myData)
   var data = {
     createdIndex: payload.information.keyIndex,
     date: payload.information.created.date,
@@ -57,4 +57,12 @@ export function voteResult (state, payload) {
     state.votesResult.entry3 += 1
     console.log(state.votesResult.entry3)
   }
+}
+
+export function commitGetPersonnelLists (state, payload) {
+  Vue.set(state.personnelLists, payload.id, payload.information)
+}
+
+export function commitDeletePersonnelLists (state, payload) {
+  Vue.delete(state.personnelLists, payload.keyIndex)
 }

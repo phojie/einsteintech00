@@ -1,6 +1,6 @@
 <template>
 
-  <q-card style="width: 850px; max-width: 80vw;">
+  <q-card style="width: 900px; max-width: 90vw;">
     <q-card-section class="row no-wrap">
       <div class="text-h6">
         <slot name="headerTitle"></slot>
@@ -47,26 +47,90 @@
             </q-uploader>
           </div>
           <div class="q-pt-xs-md q-pt-md-none col-md-4 col-xs-12 q-gutter-y-sm">
-            <q-select
+            <q-input
               autofocus
               dense
               outlined
-              :value="studentInformationForm.course"
-              @input="$emit('update:course', $event)"
-              :options="options"
-              label="Department"
+              :value="studentInformationForm.prefix"
+              @input="setPrefix($event)"
+              label="Prefix"
               class="text-capitalize"
-              :error="validations.course.$error"
+              :error="validations.prefix.$error"
               hide-bottom-space
             >
               <template
                 v-slot:error
-                v-if="!validations.course.required"
+                v-if="!validations.prefix.required"
               >
-                Student Program is required to fill
+                Prefix is required
               </template>
-            </q-select>
+            </q-input>
 
+            <q-input
+              dense
+              outlined
+              :value="studentInformationForm.firstname"
+              @input="setFirstname($event)"
+              label="Firstname"
+              class="text-capitalize"
+              :error="validations.firstname.$error"
+              hide-bottom-space
+            >
+              <template
+                v-slot:error
+                v-if="!validations.firstname.required"
+              >
+                Firstname is required
+              </template>
+            </q-input>
+            <q-input
+              dense
+              outlined
+              :value="studentInformationForm.middlename"
+              @input="$emit('update:middlename', $event)"
+              label="Middlename"
+              class="text-capitalize"
+              :error="false"
+              hide-bottom-space
+            />
+            <q-input
+              dense
+              outlined
+              type="text"
+              :value="studentInformationForm.surname"
+              @input="setSurname($event)"
+              label="Surname"
+              class="text-capitalize"
+              :error="validations.surname.$error"
+              hide-bottom-space
+            >
+              <template
+                v-slot:error
+                v-if="!validations.surname.required"
+              >
+                Surname is required
+              </template>
+            </q-input>
+
+            <q-select
+              dense
+              outlined
+              class="text-capitalize"
+              hide-bottom-space
+              label="Suffix"
+              :value="studentInformationForm.suffix"
+              @input="setSuffix($event)"
+              use-input
+              use-chips
+              hide-dropdown-icon
+              multiple
+              new-value-mode="add-unique"
+              input-debounce="0"
+            />
+
+          </div>
+
+          <div class="q-pt-xs-md q-pt-md-none col-md-4 col-xs-12 q-gutter-y-sm q-pl-md-lg">
             <q-input
               outlined
               dense
@@ -98,93 +162,48 @@
                 ID already registered
               </template>
             </q-input>
-            <q-input
-              dense
-              outlined
-              :value="studentInformationForm.firstname"
-              @input="setFirstname($event)"
-              label="Prefix"
-              class="text-capitalize"
-              hide-bottom-space
-            />
-            <q-input
-              dense
-              outlined
-              :value="studentInformationForm.firstname"
-              @input="setFirstname($event)"
-              label="Firstname"
-              class="text-capitalize"
-              :error="validations.firstname.$error"
-              hide-bottom-space
-            >
-              <template
-                v-slot:error
-                v-if="!validations.firstname.required"
-              >
-                Alien is not valid
-              </template>
-            </q-input>
-            <q-input
-              dense
-              outlined
-              :value="studentInformationForm.middlename"
-              @input="$emit('update:middlename', $event)"
-              label="Middlename"
-              class="text-capitalize"
-              :error="false"
-              hide-bottom-space
-            />
-            <q-input
-              dense
-              outlined
-              type="text"
-              :value="studentInformationForm.surname"
-              @input="setSurname($event)"
-              label="Surname"
-              class="text-capitalize"
-              :error="validations.surname.$error"
-              hide-bottom-space
-            >
-              <template
-                v-slot:error
-                v-if="!validations.surname.required"
-              >
-                Paul kinahanglan jd ang familyname oi
-              </template>
-            </q-input>
 
-            <q-input
+            <q-select
               dense
               outlined
-              :value="studentInformationForm.firstname"
-              @input="setFirstname($event)"
-              label="Suffix"
+              :value="studentInformationForm.course"
+              @input="$emit('update:course', $event)"
+              :options="options"
+              label="Department"
               class="text-capitalize"
+              :error="validations.course.$error"
               hide-bottom-space
-            />
+            >
+              <template
+                v-slot:error
+                v-if="!validations.course.required"
+              >
+                Personnel Department is required
+              </template>
+            </q-select>
 
             <q-input
               dense
               outlined
               type="text"
-              :value="studentInformationForm.surname"
-              @input="setSurname($event)"
+              :value="studentInformationForm.position"
+              @input="setPosition($event)"
               label="Position"
               class="text-capitalize"
-              :error="validations.surname.$error"
+              :error="validations.position.$error"
               hide-bottom-space
             >
               <template
                 v-slot:error
-                v-if="!validations.surname.required"
+                v-if="!validations.position.required"
               >
-                Paul kinahanglan jd ang familyname oi
+                Personnel Position is Required
               </template>
             </q-input>
 
             <slot name="dialogBtn"></slot>
-
           </div>
+
         </div>
 
         <!-- </q-form> -->
@@ -221,9 +240,20 @@ export default {
     test () {
       console.log('test')
     },
+    setPosition (event) {
+      this.$emit('update:position', event)
+      this.validations.position.$touch()
+    },
     setFirstname (event) {
       this.$emit('update:firstname', event)
       this.validations.firstname.$touch()
+    },
+    setPrefix (event) {
+      this.$emit('update:prefix', event)
+      this.validations.prefix.$touch()
+    },
+    setSuffix (event) {
+      this.$emit('update:suffix', event)
     },
     setSurname (event) {
       this.$emit('update:surname', event)

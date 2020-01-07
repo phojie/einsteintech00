@@ -1,12 +1,12 @@
 <template>
   <q-page class="q-pa-md-md">
-    <!-- <pre>{{studentLists}}</pre> -->
+    <!-- <pre>{{personnelLists}}</pre> -->
     <q-table
       card-style="overflow:auto !important"
       :loading="loading"
       :fullscreen.sync="isFullscreen"
       class="text-blue-grey-9 q-pb-xl"
-      :data="studentLists"
+      :data="personnelLists"
       :columns="columns"
       :filter="filter"
       row-key="keyIndex"
@@ -108,14 +108,85 @@
             key="fullname"
             :props="props"
           >
-            {{ props.row.fullname }}
+            {{props.row.prefix}} {{ props.row.fullname }} {{props.row.suffix}}
           </q-td>
 
           <q-td
-            key="course"
+            key="position"
             :props="props"
           >
-            {{ props.row.course }}
+            {{ props.row.position }}
+          </q-td>
+          <q-td
+            key="department"
+            :props="props"
+          >
+            <q-chip
+              v-if="props.row.department === 'Top administrator'"
+              class="glossy text-caption"
+              color="orange"
+              dense
+              text-color="white"
+              icon-right="star"
+            >
+              {{props.row.department}}
+            </q-chip>
+
+            <q-chip
+              v-else-if="props.row.department === 'Middle administrator'"
+              class="glossy text-caption"
+              color="light-green"
+              dense
+              text-color="white"
+              icon-right="star"
+            >
+              {{props.row.department}}
+            </q-chip>
+
+            <q-chip
+              v-else-if="props.row.department === 'College faculty'"
+              class="glossy text-caption"
+              color="cyan"
+              dense
+              text-color="white"
+              icon-right="star"
+            >
+              {{props.row.department}}
+            </q-chip>
+
+            <q-chip
+              v-else-if="props.row.department === 'High school faculty'"
+              class="glossy text-caption"
+              color="purple"
+              dense
+              text-color="white"
+              icon-right="star"
+            >
+              {{props.row.department}}
+            </q-chip>
+
+            <q-chip
+              v-else-if="props.row.department === 'Elementary faculty'"
+              class="glossy text-caption"
+              color="pink"
+              dense
+              text-color="white"
+              icon-right="star"
+            >
+              {{props.row.department}}
+            </q-chip>
+
+            <q-chip
+              v-else-if="props.row.department === 'Service unit personnel'"
+              class="glossy text-caption"
+              color="red"
+              dense
+              text-color="white"
+              icon-right="star"
+            >
+              {{props.row.department}}
+            </q-chip>
+
           </q-td>
 
           <q-td
@@ -199,11 +270,12 @@
     <q-dialog v-model="addStudentDialog">
       <personnelFormModal
         ref="personnelFormModal"
-        @submitAddStudent="submitAddStudent"
         @added="addPhoto"
         :options="options"
-        :LRNnumber.sync="studentInformationForm.LRNnumber"
         :idnumber.sync="studentInformationForm.idnumber"
+        :prefix.sync="studentInformationForm.prefix"
+        :suffix.sync="studentInformationForm.suffix"
+        :position.sync="studentInformationForm.position"
         :firstname.sync="studentInformationForm.firstname"
         :middlename.sync="studentInformationForm.middlename"
         :surname.sync="studentInformationForm.surname"
@@ -217,9 +289,10 @@
           <q-btn
             color="primary"
             label="Submit"
-            @click="submitAddStudent"
+            @click="submitAddPersonnel"
             :loading="loading"
             :disable="jie1"
+            size="20px"
             class="full-width q-mt-lg"
           />
         </template>
@@ -229,10 +302,12 @@
     <q-dialog v-model="updateStudentDialog">
       <personnelFormModal
         ref="personnelFormModal"
-        @submitAddStudent="submitAddStudent"
         @added="addPhoto"
         :options="options"
         :idnumber.sync="studentInformationForm.idnumber"
+        :prefix.sync="studentInformationForm.prefix"
+        :suffix.sync="studentInformationForm.suffix"
+        :position.sync="studentInformationForm.position"
         :firstname.sync="studentInformationForm.firstname"
         :middlename.sync="studentInformationForm.middlename"
         :surname.sync="studentInformationForm.surname"
@@ -241,12 +316,12 @@
         :loading="loading"
         :validations="$v.studentInformationForm"
       >
-        <template slot="headerTitle">Edit Profile</template>
+        <template slot="headerTitle">Edit Personnel Profile</template>
         <template slot="dialogBtn">
           <q-btn
             color="primary"
             label="Update"
-            @click="submitUpdateStudent"
+            @click="submitUpdatePersonnel"
             :loading="loading"
             :disable="jie1"
             class="full-width q-mt-lg"
@@ -267,8 +342,10 @@ import { required, minLength } from 'vuelidate/lib/validators'
 export default {
   validations: {
     studentInformationForm: {
+      prefix: { required },
       firstname: { required },
       surname: { required },
+      position: { required },
       idnumber: {
         required,
         minLength: minLength(11),
@@ -276,7 +353,7 @@ export default {
           let vm = this
           // standalone validator ideally should not assume a field is required
           if (value === '') return true
-          let isUnique = find(vm.studentLists, ['idnumber', value])
+          let isUnique = find(vm.personnelLists, ['idnumber', value])
           // console.log(vm.dummyStudentInformationForm.idnumber, value)
           if (isUnique && vm.dummyStudentInformationForm.idnumber !== value) {
             // error alert
@@ -307,7 +384,7 @@ export default {
       hidebottom: false,
       isFullscreen: false,
       filter: '',
-      visibleColumns: ['idnumber', 'profileImgUrl', 'fullname', 'course', 'keyIndex'],
+      visibleColumns: ['idnumber', 'profileImgUrl', 'fullname', 'position', 'department', 'keyIndex'],
       columns: [
         {
           name: 'idnumber',
@@ -329,10 +406,16 @@ export default {
           field: 'fullname'
         },
         {
-          name: 'course',
+          name: 'position',
           label: 'Position',
           align: 'left',
-          field: 'course'
+          field: 'position'
+        },
+        {
+          name: 'department',
+          label: 'Department',
+          align: 'left',
+          field: 'department'
         },
         {
           name: 'keyIndex',
@@ -342,24 +425,28 @@ export default {
         }
       ],
       studentInformationForm: {
+        prefix: '',
         firstname: '',
         middlename: '',
         surname: '',
+        suffix: null,
         idnumber: '',
-        LRNnumber: '',
         keyIndex: '',
         course: '',
+        position: '',
         profileImgUrl: '',
         fullname: ''
       },
       dummyStudentInformationForm: {
+        prefix: '',
         firstname: '',
         middlename: '',
         surname: '',
+        suffix: null,
         idnumber: '',
-        LRNnumber: '',
         keyIndex: '',
         course: '',
+        position: '',
         profileImgUrl: '',
         fullname: ''
       },
@@ -367,13 +454,13 @@ export default {
       updateStudentDialog: false,
       model: null,
       options: [
-        'Top Administrators', 'Middle Administrators', 'College Faculty', 'High School Faculty', 'Elementary Faculty', 'Service Unit Personnel'
+        'Top Administrator', 'Middle Administrator', 'College Faculty', 'High School Faculty', 'Elementary Faculty', 'Service Unit Personnel'
       ],
       url: 'https://threadreaderapp.com/images/avatars/unknown.jpg'
     }
   },
   computed: {
-    ...mapGetters('admin', ['studentLists', 'loading', 'loadingProgress']),
+    ...mapGetters('admin', ['personnelLists', 'loading', 'loadingProgress']),
     jie1 () {
       return isEqualWith(this.dummyStudentInformationForm, this.studentInformationForm)
     }
@@ -385,8 +472,35 @@ export default {
     }
   },
   methods: {
-    ...mapActions('admin', ['getStudentLists', 'addStudentLists', 'deleteStudentLists', 'updateStudentLists']),
+    ...mapActions('admin', ['getPersonnelLists', 'addPersonnelLists', 'deletePersonnelLists', 'updatePersonnelLists']),
     ...mapMutations('admin', ['commitLoading']),
+    submitAddPersonnel () {
+      let vm = this
+      if (this.$v.studentInformationForm.$invalid) {
+        this.$v.studentInformationForm.$touch()
+        console.log(this.$v.studentInformationForm)
+      } else {
+        this.addPersonnelLists(this.studentInformationForm).then(function (result) {
+          var fullname = `${vm.studentInformationForm.firstname} ${vm.studentInformationForm.middlename.charAt(0)}. ${vm.studentInformationForm.surname}`
+          vm.$q.notify({
+            message: 'Successfully added ' + fullname,
+            color: 'positive',
+            timeout: 4000,
+            icon: 'playlist_add'
+          })
+          vm.$v.studentInformationForm.$reset()
+          vm.clearStudentForm()
+        }, function (error) {
+          console.log(error)
+          vm.$q.notify({
+            message: 'Something is wrong',
+            color: 'warning',
+            timeout: 2000,
+            icon: 'warning'
+          })
+        })
+      }
+    },
     addPhoto (data) {
       let imgData = data[0].__img['src']
       this.studentInformationForm.profileImgUrl = imgData
@@ -394,7 +508,7 @@ export default {
     dataReloader () {
       let vm = this
       this.commitLoading(true)
-      this.getStudentLists().then(function (result) {
+      this.getPersonnelLists().then(function (result) {
         vm.commitLoading(false)
       }, function (err) {
         console.log(err)
@@ -413,7 +527,7 @@ export default {
         cancel: true,
         persistent: true
       }).onOk(() => {
-        this.deleteStudentLists(data).then(function (result) {
+        this.deletePersonnelLists(data).then(function (result) {
           vm.$q.notify({
             message: 'Successfully deleted ' + result[1].fullname,
             color: 'negative',
@@ -433,13 +547,17 @@ export default {
     },
     addStudentData () {
       this.studentInformationForm = {
+        prefix: '',
         firstname: '',
         middlename: '',
         surname: '',
+        suffix: null,
         idnumber: '',
         keyIndex: '',
         course: '',
-        profileImgUrl: ''
+        position: '',
+        profileImgUrl: '',
+        fullname: ''
       }
       this.addStudentDialog = true
     },
@@ -452,7 +570,10 @@ export default {
         surname: data.surname,
         idnumber: data.idnumber,
         keyIndex: data.keyIndex,
-        course: data.course,
+        prefix: data.prefix,
+        suffix: data.suffix,
+        position: data.position,
+        course: data.department,
         profileImgUrl: data.profileImgUrl
       }
       this.dummyStudentInformationForm = {
@@ -461,12 +582,15 @@ export default {
         surname: data.surname,
         idnumber: data.idnumber,
         keyIndex: data.keyIndex,
-        course: data.course,
+        prefix: data.prefix,
+        suffix: data.suffix,
+        position: data.position,
+        course: data.department,
         profileImgUrl: data.profileImgUrl
       }
       this.updateStudentDialog = true
     },
-    submitUpdateStudent () {
+    submitUpdatePersonnel () {
       if (this.$v.studentInformationForm.$invalid) {
         this.$v.studentInformationForm.$touch()
       } else {
@@ -474,12 +598,11 @@ export default {
           let vm = this
           let jie2 = isEqualWith(this.dummyStudentInformationForm.profileImgUrl, this.studentInformationForm.profileImgUrl)
           if (jie2) {
-            // console.log('test2')
             var falseUpload = {
               'studentInfo': this.studentInformationForm,
               'uploaded': false
             }
-            this.updateStudentLists(falseUpload).then(function (result) {
+            this.updatePersonnelLists(falseUpload).then(function (result) {
               vm.updateStudentData(result)
               var fullname = `${vm.studentInformationForm.firstname} ${vm.studentInformationForm.middlename.charAt(0)}. ${vm.studentInformationForm.surname}`
               vm.$q.notify({
@@ -505,7 +628,7 @@ export default {
               'studentInfo': this.studentInformationForm,
               'uploaded': true
             }
-            this.updateStudentLists(trueUpload).then(function (result) {
+            this.updatePersonnelLists(trueUpload).then(function (result) {
               vm.updateStudentData(result)
               var fullname = `${vm.studentInformationForm.firstname} ${vm.studentInformationForm.middlename.charAt(0)}. ${vm.studentInformationForm.surname}`
               vm.$q.notify({
@@ -530,35 +653,7 @@ export default {
         }
       }
     },
-    submitAddStudent () {
-      // console.log('test', this.studentInformationForm.profileImgUrl)
-      let vm = this
 
-      if (this.$v.studentInformationForm.$invalid) {
-        this.$v.studentInformationForm.$touch()
-        console.log(this.$v.studentInformationForm)
-      } else {
-        this.addStudentLists(this.studentInformationForm).then(function (result) {
-          var fullname = `${vm.studentInformationForm.firstname} ${vm.studentInformationForm.middlename.charAt(0)}. ${vm.studentInformationForm.surname}`
-          vm.$q.notify({
-            message: 'Successfully added ' + fullname,
-            color: 'positive',
-            timeout: 4000,
-            icon: 'playlist_add'
-          })
-          vm.$v.studentInformationForm.$reset()
-          vm.clearStudentForm()
-        }, function (error) {
-          console.log(error)
-          vm.$q.notify({
-            message: 'Something is wrong',
-            color: 'warning',
-            timeout: 2000,
-            icon: 'warning'
-          })
-        })
-      }
-    },
     printStudents () {
       this.isFullscreen = true
       this.hidebottom = true
@@ -581,13 +676,17 @@ export default {
     },
     clearStudentForm () {
       this.studentInformationForm = {
+        prefix: '',
         firstname: '',
         middlename: '',
         surname: '',
+        suffix: null,
         idnumber: '',
         keyIndex: '',
         course: '',
-        profileImgUrl: ''
+        position: '',
+        profileImgUrl: '',
+        fullname: ''
       }
       this.$refs.personnelFormModal.$refs.refIdnumber.$el.focus()
       this.$refs.personnelFormModal.$refs.refUploaderImage.reset()

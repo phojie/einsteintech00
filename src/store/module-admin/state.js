@@ -1,5 +1,6 @@
 export default {
   studentLists: {},
+  personnelLists: {},
   loading: false,
   loadingProgress: 0,
   libraryStat: {},
