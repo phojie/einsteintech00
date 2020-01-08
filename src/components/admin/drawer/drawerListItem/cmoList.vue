@@ -12,18 +12,18 @@
         <q-item-label
           style="letter-spacing:1px;"
           class="text-subtitle2"
-        >Library</q-item-label>
+        >Campus Ministry Office</q-item-label>
 
         <q-item-label
           class="text-blueGreyfire ellipsis "
           caption
         >
           <span
-            v-for="(list, index) in libraryMenuList"
+            v-for="(list, index) in cmoList"
             :key="index"
           >
             {{list.title}}
-            <span v-if="index+1 < libraryMenuList.length">,</span>
+            <span v-if="index+1 < cmoList.length">,</span>
           </span>
 
         </q-item-label>
@@ -36,10 +36,9 @@
         <q-item
           active-class="text-blue-5"
           clickable
-          v-for="(list, index) in libraryMenuList"
+          v-for="(list, index) in cmoList"
           :key="index"
           :to='list.nameRoute'
-          :href="href"
         >
           <q-item-section avatar>
             <q-icon
@@ -59,7 +58,7 @@
 
 <script>
 export default {
-  props: ['libraryMenuList'],
+  props: ['cmoList'],
   data () {
     return {
       showExpand: true
@@ -67,7 +66,7 @@ export default {
   },
   created () {
     var route = this.$route.path
-    if (route === '/libraryMenuList') {
+    if (route === '/registrarStudents') {
       this.showExpand = true
     }
   }

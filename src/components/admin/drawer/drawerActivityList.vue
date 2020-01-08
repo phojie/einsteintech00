@@ -117,6 +117,14 @@
         <q-separator class="bg-secondaryTransSeparator" />
 
         <libraryList :libraryMenuList="libraryMenuList" />
+
+        <q-separator class="bg-secondaryTransSeparator" />
+
+        <dsaList :dsaList="dsaList" />
+
+        <q-separator class="bg-secondaryTransSeparator" />
+
+        <cmoList :cmoList="cmoList" />
       </q-list>
 
     </q-scroll-area>
@@ -128,7 +136,9 @@ export default {
   props: ['thumbStyle', 'contentStyle', 'contentActiveStyle', 'drawerActivityList'],
   components: {
     'registrarList': require('./drawerListItem/registrarList.vue').default,
-    'libraryList': require('./drawerListItem/libraryList.vue').default
+    'libraryList': require('./drawerListItem/libraryList.vue').default,
+    'dsaList': require('./drawerListItem/dsaList.vue').default,
+    'cmoList': require('./drawerListItem/cmoList.vue').default
 
   },
   data () {
@@ -157,7 +167,8 @@ export default {
         {
           title: 'Catalog',
           avatar: 'library_books',
-          nameRoute: '/libraryCatalog'
+          nameRoute: '#',
+          href: 'https://opac-system.firebaseapp.com'
         },
         {
           title: 'Statistics',
@@ -174,6 +185,24 @@ export default {
           avatar: 'monetization_on',
           nameRoute: ''
         }
+      ],
+      dsaList: [
+        // {
+        //   title: 'Voting',
+        //   avatar: 'library_books'
+        // },
+        // {
+        //   title: 'Statistics',
+        //   avatar: 'perm_contact_calendar'
+        // },
+        // {
+        //   title: 'Borrowers',
+        //   avatar: 'book'
+        // },
+        // {
+        //   title: 'Penalties',
+        //   avatar: 'monetization_on'
+        // }
 
       ]
     }

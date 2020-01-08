@@ -66,7 +66,7 @@ export default {
   },
   created () {
     var route = this.$route.path
-    if (route === '/registrarStudents') {
+    if (route === '/dsaList') {
       this.showExpand = true
     }
   }
