@@ -229,28 +229,28 @@
       <div class=" q-pa-md col-6">
         <div class="col">
           <q-card class="">
-            <q-card-section>
-              <q-toolbar-title>
-                Announcement
-                <q-input
-                  autofocus=""
-                  input-class=" text-transparent text-h3 text-bold text-center"
-                  v-model="testtester"
-                  @keyup="idnumbertypetest"
-                  mask="#### - ####"
-                  color="blue"
-                  style="width:40px;"
-                  class=" text-weight-bold dense"
-                  ref="dummytester"
-                />
-                <!-- <p class="q-mt-md text-subtitle2">
-                  <span class="text-purple">
-                    TO ALL STUDENT DON'T FORGET TO LOG IN 👀💖
-                  </span>
-                </p> -->
-              </q-toolbar-title>
-              <div class="q-mt-md text-bold">
+            <q-badge>Announcement!</q-badge>
+            <q-card-section style="margin-top:-10px">
+              <q-toolbar class="bg-light-green-8 text-white shadow-12 rounded-borders">
+                <q-toolbar-title class="text-weight-bolder text-dark-orange">
+                  NATIONAL BIBLE MONTH 2020
+                </q-toolbar-title>
+                <span class="text-h3">🙌 b 2 😇</span>
+              </q-toolbar>
+              <q-input
+                autofocus=""
+                input-class=" text-transparent text-h3 text-bold text-center"
+                v-model="testtester"
+                @keyup="idnumbertypetest"
+                mask="#### - ####"
+                color="blue"
+                style="width:40px;margin-top:-40px"
+                class=" text-weight-bold dense"
+                ref="dummytester"
+              />
+              <div class="q-mt-md text-medium text-grey-9 text-body2">
                 <div class="text-justify">
+                  God’s Word contains a message so <span class="text-deep-orange-9 text-weight-bolder text-subtitle1">beautiful</span>, <span class="text-purple-9 text-weight-bolder text-subtitle1">true</span>, and <span class="text-indigo-9 text-weight-bolder text-subtitle1">powerful</span> that it can become life-changing for anyone who gets to read it. To this day, wherever you are in the world, the Bible remains relevant and timely. And when heeded and obeyed, it can change a nation for the better.
                 </div>
               </div>
               <!-- Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum laborum voluptatum, quas sapiente ad minima molestias voluptates nisi repellendus, ex ut nihil aliquid nostrum at exercitationem suscipit aliquam optio atque. -->
@@ -286,12 +286,12 @@
                   class="col-12 text-center"
                   style="margin-top:-40px"
                 >
-                  <h2 class="text-weight-bolder text-blue-grey-9">mellifluous</h2>
+                  <h2 class="text-weight-bolder text-blue-grey-9">surfeit</h2>
                   <h5
                     class="text-body1 text-blue-9"
                     style="margin-top:-50px"
                   >
-                    <span class="text-italic">adjective</span> | muh-LIFF-luh-wus
+                    <span class="text-italic">noun</span> | SER-fut
                   </h5>
                 </div>
               </div>
@@ -299,13 +299,15 @@
               <div>
                 <q-toolbar-title class="text-h5 text-blue-9 text-bold">Definition</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  1 : having a smooth rich flow
+                  1 : an overabundant supply : excess
                   <br>
-                  2 : filled with something (such as honey) that sweetens
+                  2 : an intemperate or immoderate indulgence in something (such as food or drink)
+                  <br>
+                  3 : disgust caused by excess
                 </p>
                 <q-toolbar-title class="q-pa-none text-h5 text-blue-9 text-bold">Example</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  "As you explore each room, you also hear a mellifluous voice-over uttering the relevant environmental facts and recommendations…" <span class="text-blue-7"> — Laurel Graeber, The New York Times, 23 Oct. 2019</span>
+                  "The fracking boom in the United States has led to a surfeit of natural gas worldwide." <span class="text-blue-7"> — Robinson Meyer, The Atlantic, 3 Dec. 2019</span>
                 </p>
                 <p class="text-subtitle1 text-blue-grey-10">
                   "Her voice alone is a stunner, a mellifluous soprano, more delicate than her big sister's powerhouse belt." <span class="text-blue-7"> — Peter Larsen, The Orange County Register (Anaheim, California), 10 Nov. 2019</span>
@@ -318,7 +320,17 @@
 
       </div>
 
-      <div class="q-pr-md q-pt-md q-pb-md col-6">
+      <div
+        v-if="bibleWeek"
+        class="q-pr-md q-pt-md q-pb-md col-6"
+      >
+        <bibleCarousel class="q-mb-md">
+          <!-- <template v-slot:BibleData>
+            {{BibleData}}
+          </template> -->
+          {{BibleData}}
+        </bibleCarousel>
+
         <q-card
           flat
           bordered
@@ -425,7 +437,7 @@
           </q-card-section>
         </q-card>
 
-        <q-card>
+        <q-card v-if="!bibleWeek">
           <q-card-section>
             <q-toolbar-title class="text-orange-9 text-weight-bolder text-h5">VISION</q-toolbar-title>
             <p
@@ -450,6 +462,19 @@
         </q-card>
         <!-- <q-video src="https://www.youtube.com/embed/k3_tw44QsZQ?rel=0" /> -->
       </div>
+
+      <div
+        v-else
+        class="q-pr-md q-pt-md q-pb-md col-6"
+      >
+        <bibleCarousel>
+          <!-- <template v-slot:BibleData>
+            {{BibleData}}
+          </template> -->
+          {{BibleData}}
+        </bibleCarousel>
+      </div>
+
     </div>
 
     <q-dialog v-model="dialogIdtyper">
@@ -500,7 +525,8 @@ import axios from 'axios'
 
 export default {
   components: {
-    'qrcodereader': require('components/qrcodeReader/qrcodereader1.vue').default
+    'qrcodereader': require('components/qrcodeReader/qrcodereader1.vue').default,
+    'bibleCarousel': require('components/carousel/bibleCarousel.vue').default
     // 'libraryQrLoginCarousel': require('components/carousel/libraryQrcodelogin.vue').default
   },
   data () {
@@ -534,7 +560,9 @@ export default {
         course: '',
         profileImgUrl: '',
         fullname: ''
-      }
+      },
+      BibleData: [],
+      bibleWeek: true
     }
   },
   computed: {
@@ -571,6 +599,10 @@ export default {
   },
   methods: {
     ...mapActions('admin', ['addLibraryStat']),
+    getWordApi () {
+      // axios.get('https://api.wordnik.com/v4/words.json/wordOfTheDay?api_key=j7nn0y30zqfvdsgd4c5yzwenypk9bn888o3qhx1d1zhq48soz')
+      //   .then(response => (this.wordInfo = response))
+    },
     getColor (data) {
       console.log(data)
       var color = ''
@@ -599,6 +631,7 @@ export default {
           data = 15
           vm.answerNow = false
           vm.getTrivia()
+          vm.getBibleVerses()
         }
       }, 1000)
 
@@ -614,6 +647,18 @@ export default {
       axios.get('https://opentdb.com/api.php?amount=1').then(
         response => (this.triviaData = response)
       )
+    },
+    getBibleVerses () {
+      let vm = this
+      // axios.get('http://quotes.rest/bible/verse.json')
+      axios.get('https://beta.ourmanna.com/api/v1/get/?format=text&order=random')
+        .then(function (response) {
+          console.log(response)
+          vm.BibleData = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     },
     enterIdnumber () {
       let vm = this
@@ -783,6 +828,8 @@ export default {
   mounted () {
     this.getTrivia()
     this.timerStart()
+    this.getBibleVerses()
+    // this.getWordApi()
   }
 }
 </script>
