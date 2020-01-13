@@ -21,8 +21,7 @@
       :pagination.sync="pagination"
     >
       <template v-slot:top="props">
-        <div class="text-h4 text-bold">Statistics</div>
-
+        <div class="text-h4 text-bold">Library Visitors</div>
         <q-space />
 
         <q-input

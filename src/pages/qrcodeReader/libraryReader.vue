@@ -285,12 +285,12 @@
                   class="col-12 text-center"
                   style="margin-top:-40px"
                 >
-                  <h2 class="text-weight-bolder text-blue-grey-9">wealplay</h2>
+                  <h2 class="text-weight-bolder text-blue-grey-9">glomplay</h2>
                   <h5
                     class="text-body1 text-blue-9"
                     style="margin-top:-50px"
                   >
-                    <span class="text-italic">noun</span> | WEEL
+                    <span class="text-italic">verb</span> | GLAHM
                   </h5>
                 </div>
               </div>
@@ -298,14 +298,16 @@
               <div>
                 <q-toolbar-title class="text-h5 text-blue-9 text-bold">Definition</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  : a sound, healthy, or prosperous state : well-being
+                  1 : take, steal
+                  <br>
+                  2 : seize, catch
                 </p>
                 <q-toolbar-title class="q-pa-none text-h5 text-blue-9 text-bold">Example</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  Before presenting the bill to the legislature, the senator spoke of devotion to the general weal.
+                 "It would not surprise me if the sampling 'Fleabag' receives from glomming an Emmy sets it up as a series that makes viewers eagerly await new seasons." <span class="text-blue-7"> — Neal Zoren, The Delaware County (Pennsylvania) Daily Times, 30 Sept. 2019</span>
                 </p>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  "All our life … is but a mass of habits,—practical, emotional, and intellectual,—systematically organized for our weal or woe, and bearing us irresistibly toward our destiny, whatever the latter may be." <span class="text-blue-7"> — William James, Talks to Teachers on Psychology, 1899</span>
+                  "A magic plastic hypno-ring glommed out of a cereal box puts him under the lads' spell and has him peeling down to his underpants and going forth to, well, mess things up."  <span class="text-blue-7"> — Soren Andersen, The Seattle Times, 1 June 2017</span>
                 </p>
               </div>
             </q-card-section>

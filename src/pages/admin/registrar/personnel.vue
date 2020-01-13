@@ -505,15 +505,6 @@ export default {
       let imgData = data[0].__img['src']
       this.studentInformationForm.profileImgUrl = imgData
     },
-    dataReloader () {
-      let vm = this
-      this.commitLoading(true)
-      this.getPersonnelLists().then(function (result) {
-        vm.commitLoading(false)
-      }, function (err) {
-        console.log(err)
-      })
-    },
     deleteStudent (data) {
       let vm = this
       this.$q.dialog({
@@ -704,8 +695,6 @@ export default {
     }
   },
   created () {
-    this.dataReloader()
-    // console.log(this.$v.studentInformationForm)
   }
 }
 </script>

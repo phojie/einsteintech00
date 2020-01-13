@@ -5,15 +5,31 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
+import { mapActions, mapMutations } from 'vuex'
 
 export default {
   name: 'App',
   methods: {
-    ...mapActions('admin', ['getStudentLists'])
+    ...mapActions('admin', ['getStudentLists', 'getLibraryStat', 'getPersonnelLists']),
+    ...mapMutations('admin', ['commitLoading']),
+    dataReloader () {
+      let vm = this
+      this.commitLoading(true)
+      this.getPersonnelLists().then(function (result) {
+        vm.commitLoading(false)
+      }, function (err) {
+        console.log(err)
+      })
+    }
   },
   created () {
-    this.getStudentLists()
+    let vm = this
+    this.dataReloader()
+    this.$q.loading.show()
+    this.getStudentLists().then(function (result) {
+      vm.$q.loading.hide()
+      vm.getLibraryStat()
+    })
   }
 
 }

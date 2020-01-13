@@ -3,48 +3,43 @@ import Vue from 'vue'
 import capitalize from 'lodash/capitalize'
 // import lowerFirst from 'lodash/lowerFirst'
 
-export function getStudentLists (context) {
+export function getStudentLists ({ commit, state }) {
   return new Promise((resolve, reject) => {
-    fireDB
-      .collection('studentLists')
-      .onSnapshot({ includeMetadataChanges: true }, function (snapshot) {
-        resolve()
-        snapshot.docChanges().forEach(
-          function (change) {
-            if (change.type === 'added' || change.type === 'modified') {
+    if (state.studentLists.__ob__.vmCount === 0) {
+      fireDB
+        .collection('studentLists')
+        .onSnapshot(function (snapshot) {
+          snapshot.docChanges().forEach(
+            function (change) {
+              if (change.type === 'added' || change.type === 'modified') {
               // console.log(change.doc.data())
-              const data = {
-                id: change.doc.data().keyIndex,
-                information: change.doc.data()
+                const data = {
+                  id: change.doc.data().keyIndex,
+                  information: change.doc.data()
+                }
+                const fullname = `${change.doc.data().firstname} ${change.doc.data().middlename.charAt(0)}. ${change.doc.data().surname}`
+
+                Vue.set(data.information, 'fullname', fullname)
+                commit('commitGetStudentLists', data)
               }
-
-              const fullname = `${
-                change.doc.data().firstname
-              } ${change.doc.data().middlename.charAt(0)}. ${
-                change.doc.data().surname
-              }`
-              var source = snapshot.metadata.fromCache
-                ? 'local cache'
-                : 'server'
-              console.log('Data came from ' + source)
-
-              Vue.set(data.information, 'fullname', fullname)
-              context.commit('commitGetStudentLists', data)
-            }
-            if (change.type === 'modified') {
-            }
-            if (change.type === 'removed') {
+              if (change.type === 'modified') {
+              }
+              if (change.type === 'removed') {
               // console.log('Removed city: ', change.doc.data())
-              context.commit('commitDeleteStudentLists', change.doc.data())
-            }
-          },
-          function (error) {
+                commit('commitDeleteStudentLists', change.doc.data())
+              }
+              resolve()
+            },
+            function (error) {
             // The Promise was rejected.
-            reject()
-            console.error(error)
-          }
-        )
-      })
+              reject()
+              console.error(error)
+            }
+          )
+        })
+    } else {
+      resolve()
+    }
   })
 }
 
@@ -236,44 +231,47 @@ export function addLibraryStat (context, payload) {
   })
 }
 
-export function getLibraryStat (context, payload) {
+export function getLibraryStat ({ commit, state }, payload) {
   return new Promise(function (resolve, reject) {
     // fireDB.collection('studentLists').onSnapshot({ includeMetadataChanges: true }, function (snapshot) {
-    fireDB
-      .collection('Library/uyM3J8XUI1aI4dDm0reC/Statisticshay')
-      .onSnapshot({ includeMetadataChanges: true }, function (snapshot) {
-        snapshot.docChanges().forEach(
-          function (change) {
-            if (change.type === 'added') {
+    if (state.personnelLists.__ob__.vmCount === 0) {
+      fireDB
+        .collection('Library/uyM3J8XUI1aI4dDm0reC/Statisticshay')
+        .onSnapshot(function (snapshot) {
+          snapshot.docChanges().forEach(
+            function (change) {
+              if (change.type === 'added') {
               // console.log(change.doc.data())
-              const data = {
-                id: change.doc.data().keyIndex,
-                information: change.doc.data()
+                const data = {
+                  id: change.doc.data().keyIndex,
+                  information: change.doc.data()
+                }
+                // console.log('test')
+                commit('commitGetLibraryStat', data)
               }
-              // console.log('test')
-              context.commit('commitGetLibraryStat', data)
-              resolve()
-            }
-            if (change.type === 'modified') {
-              console.log('modified console')
-            }
-            if (change.type === 'removed') {
-              context.commit(
-                'commitDeleteLibraryStat',
-                change.doc.data().keyIndex
-              )
-              resolve()
+              if (change.type === 'modified') {
+                console.log('modified console')
+              }
+              if (change.type === 'removed') {
+                commit(
+                  'commitDeleteLibraryStat',
+                  change.doc.data().keyIndex
+                )
               // console.log('Removed city: ', change.doc.data())
               // context.commit('commitDeleteStudentLists', change.doc.data())
-            }
-          },
-          function (error) {
+              }
+            },
+            function (error) {
             // The Promise was rejected.
-            reject()
-            console.error(error)
-          }
-        )
-      })
+              reject()
+              console.error(error)
+            }
+          )
+        })
+    } else {
+      console.log('test')
+      resolve()
+    }
   })
 }
 
@@ -376,7 +374,7 @@ export function getPersonnelLists (context) {
   return new Promise((resolve, reject) => {
     fireDB
       .collection('Registrar/Personnel/Lists')
-      .onSnapshot({ includeMetadataChanges: true }, function (snapshot) {
+      .onSnapshot(function (snapshot) {
         resolve()
         snapshot.docChanges().forEach(
           function (change) {
@@ -388,14 +386,7 @@ export function getPersonnelLists (context) {
               }
 
               const fullname = `${
-                change.doc.data().firstname
-              } ${change.doc.data().middlename.charAt(0)}. ${
-                change.doc.data().surname
-              }`
-              var source = snapshot.metadata.fromCache
-                ? 'local cache'
-                : 'server'
-              console.log('Data came from ' + source)
+                change.doc.data().firstname} ${change.doc.data().middlename.charAt(0)}. ${change.doc.data().surname}`
 
               Vue.set(data.information, 'fullname', fullname)
               context.commit('commitGetPersonnelLists', data)
