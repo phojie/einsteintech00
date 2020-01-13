@@ -573,7 +573,7 @@ export default {
         prefix: data.prefix,
         suffix: data.suffix,
         position: data.position,
-        course: data.department,
+        course: data.course,
         profileImgUrl: data.profileImgUrl
       }
       this.dummyStudentInformationForm = {
@@ -585,7 +585,7 @@ export default {
         prefix: data.prefix,
         suffix: data.suffix,
         position: data.position,
-        course: data.department,
+        course: data.course,
         profileImgUrl: data.profileImgUrl
       }
       this.updateStudentDialog = true

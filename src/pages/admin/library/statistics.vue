@@ -1,8 +1,10 @@
 <template>
   <q-page class="q-pa-md-md">
-    <!-- <pre>
-      {{libraryStat}}
-    </pre> -->
+    <dashStatistics></dashStatistics>
+    <q-separator
+      spaced
+      inset
+    ></q-separator>
     <q-table
       card-style="overflow:auto !important"
       :loading="loading"
@@ -19,7 +21,7 @@
       :pagination.sync="pagination"
     >
       <template v-slot:top="props">
-        <div class="text-h4 text-bold"> Library Statistics</div>
+        <div class="text-h4 text-bold">Statistics</div>
 
         <q-space />
 
@@ -194,6 +196,9 @@
 <script>
 import { mapActions, mapGetters } from 'vuex'
 export default {
+  components: {
+    'dashStatistics': require('components/libraryCompo/statisticsCompo/dash.vue').default
+  },
   data () {
     return {
       isFullscreen: false,

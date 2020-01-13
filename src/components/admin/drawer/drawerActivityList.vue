@@ -124,7 +124,7 @@
 
         <q-separator class="bg-secondaryTransSeparator" />
 
-        <cmoList :cmoList="cmoList" />
+        <!-- <cmoList :cmoList="cmoList" /> -->
       </q-list>
 
     </q-scroll-area>
@@ -137,8 +137,8 @@ export default {
   components: {
     'registrarList': require('./drawerListItem/registrarList.vue').default,
     'libraryList': require('./drawerListItem/libraryList.vue').default,
-    'dsaList': require('./drawerListItem/dsaList.vue').default,
-    'cmoList': require('./drawerListItem/cmoList.vue').default
+    'dsaList': require('./drawerListItem/dsaList.vue').default
+    // 'cmoList': require('./drawerListItem/cmoList.vue').default
 
   },
   data () {
@@ -166,9 +166,7 @@ export default {
       libraryMenuList: [
         {
           title: 'Catalog',
-          avatar: 'library_books',
-          nameRoute: '#',
-          href: 'https://opac-system.firebaseapp.com'
+          avatar: 'library_books'
         },
         {
           title: 'Statistics',

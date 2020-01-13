@@ -39,7 +39,6 @@
           v-for="(list, index) in libraryMenuList"
           :key="index"
           :to='list.nameRoute'
-          :href="href"
         >
           <q-item-section avatar>
             <q-icon
