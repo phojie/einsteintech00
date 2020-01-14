@@ -2,7 +2,6 @@
   <q-drawer
     :value="drawerActivityList"
     :width="250"
-    class="jieHidden"
     content-class="navNachos"
     content-style="padding-bottom:40px;"
   >
@@ -11,7 +10,7 @@
       clickable
       class="bg-secondary text-white"
       style="border-bottom: 1px solid #1d3346"
-    >
+     >
       <q-item-section avatar>
         <q-avatar
           size="28px"
@@ -28,13 +27,12 @@
       </q-item-section>
 
     </q-item>
-
     <q-scroll-area
-      class="fit"
       :thumb-style="thumbStyle"
+      style="height: 90%;overflow-x:hidden"
       :content-style="contentStyle"
       :content-active-style="contentActiveStyle"
-    >
+     >
       <q-list class="q-pb-md text-blueGreyfire">
         <div class="row bg-secondary">
           <div class="col">
@@ -166,7 +164,8 @@ export default {
       libraryMenuList: [
         {
           title: 'Catalog',
-          avatar: 'library_books'
+          avatar: 'library_books',
+          nameRoute: 'libraryCatalog'
         },
         {
           title: 'Statistics',
@@ -176,7 +175,7 @@ export default {
         {
           title: 'Borrowers',
           avatar: 'book',
-          nameRoute: ''
+          nameRoute: '/libraryBorrowers'
         },
         {
           title: 'Penalties',

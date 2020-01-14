@@ -1,6 +1,13 @@
 <template>
   <q-page class="q-pa-md-md">
-    <dashStatistics></dashStatistics>
+    <div class="row wrap">
+      <div class="col-md-8 q-pr-md col-xs-12">
+        <dashStatistics>Statistics</dashStatistics>
+      </div>
+      <div class="col-md-4 col-xs-12">
+        <libraryAwardee>Library Awardees</libraryAwardee>
+      </div>
+    </div>
     <q-separator
       spaced
       inset
@@ -9,7 +16,7 @@
       card-style="overflow:auto !important"
       :loading="loading"
       :fullscreen.sync="isFullscreen"
-      class="text-blue-grey-9 q-pb-xl"
+      class="text-blue-grey-9 q-pb-xl q-mt-lg"
       :data="libraryStat"
       :columns="columns"
       :filter="filter"
@@ -89,7 +96,7 @@
             :props="props"
           >
             <!-- {{ props.row }} -->
-            {{props.row.__index + 1}}. {{ props.row.date }} || {{ props.row.time }}
+            {{ props.row.date }} || {{ props.row.time }}
           </q-td>
           <q-td
             class="text-bold text-purple-10"
@@ -196,7 +203,8 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
   components: {
-    'dashStatistics': require('components/libraryCompo/statisticsCompo/dash.vue').default
+    'dashStatistics': require('components/libraryCompo/statisticsCompo/dash.vue').default,
+    'libraryAwardee': require('components/libraryCompo/statisticsCompo/libraryAwardee.vue').default
   },
   data () {
     return {
@@ -261,7 +269,6 @@ export default {
   },
   methods: {
     ...mapActions('admin', ['deleteStatistics']),
-    ...mapActions('admin', ['getLibraryStat']),
     deleteStudent (data) {
       let vm = this
       this.$q.dialog({
@@ -316,7 +323,6 @@ export default {
     }
   },
   created () {
-    this.getLibraryStat()
   }
 }
 </script>

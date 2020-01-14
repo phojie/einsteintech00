@@ -17,20 +17,20 @@ export default function (/* { ssrContext } */) {
     modules: {
       // example
       admin
-    },
+    }
 
     // enable strict mode (adds overhead!)
     // for dev mode only
-    strict: process.env.DEV
+    // strict: process.env.DEV
     // strict: process.env.NODE_ENV !== 'production'
   })
 
-  // if (process.env.DEV && module.hot) {
-  //   module.hot.accept(['./module-admin'], () => {
-  //     const newShowcase = require('./module-admin').default
-  //     Store.hotUpdate({ modules: { admin: newShowcase } })
-  //   })
-  // }
+  if (process.env.DEV && module.hot) {
+    module.hot.accept(['./module-admin'], () => {
+      const newShowcase = require('./module-admin').default
+      Store.hotUpdate({ modules: { admin: newShowcase } })
+    })
+  }
 
   return Store
 }

@@ -23,13 +23,10 @@ export default {
     }
   },
   created () {
-    let vm = this
-    this.dataReloader()
-    this.$q.loading.show()
     this.getStudentLists().then(function (result) {
-      vm.$q.loading.hide()
-      vm.getLibraryStat()
     })
+    this.dataReloader()
+    this.getLibraryStat()
   }
 
 }

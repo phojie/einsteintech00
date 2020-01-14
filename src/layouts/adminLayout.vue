@@ -84,7 +84,7 @@ export default {
 </script>
 
 <style lang="stylus">
-.jieHidden .q-drawer__content {
-  overflow: hidden;
-}
+// .jieHidden .q-drawer__content {
+//   overflow: hidden;
+// }
 </style>

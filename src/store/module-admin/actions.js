@@ -209,9 +209,7 @@ export function updateStudentLists (context, payload) {
 }
 
 export function addLibraryStat (context, payload) {
-  console.log(payload)
   return new Promise((resolve, reject) => {
-    console.log('testya')
     let docRef = fireDB
       .collection('Library/uyM3J8XUI1aI4dDm0reC/Statisticshay')
       .doc()
@@ -240,14 +238,16 @@ export function getLibraryStat ({ commit, state }, payload) {
         .onSnapshot(function (snapshot) {
           snapshot.docChanges().forEach(
             function (change) {
-              if (change.type === 'added') {
+              if (change.type === 'added' || change.type === 'modified') {
               // console.log(change.doc.data())
-                const data = {
-                  id: change.doc.data().keyIndex,
-                  information: change.doc.data()
+                if (change.doc.data().keyIndex) {
+                  const data = {
+                    id: change.doc.data().keyIndex,
+                    information: change.doc.data()
+                  }
+                  commit('commitGetLibraryStat', data)
+                  commit('commitStatisticsBarLive', data)
                 }
-                // console.log('test')
-                commit('commitGetLibraryStat', data)
               }
               if (change.type === 'modified') {
                 console.log('modified console')
@@ -269,7 +269,6 @@ export function getLibraryStat ({ commit, state }, payload) {
           )
         })
     } else {
-      console.log('test')
       resolve()
     }
   })

@@ -34,6 +34,10 @@ const routes = [
       {
         path: '/libraryStatistics',
         component: () => import('pages/admin/library/statistics.vue')
+      },
+      {
+        path: '/libraryBorrowers',
+        component: () => import('pages/admin/library/borrowers.vue')
       }
     ]
   },
@@ -58,6 +62,10 @@ const routes = [
   {
     path: '/poll',
     component: () => import('pages/publicArea/libraryPublic/pollvote.vue')
+  },
+  {
+    path: '/statLive',
+    component: () => import('pages/publicArea/libraryPublic/STATLIVE.vue')
   }
   // {
   //   path: '/libraryLoginQR',

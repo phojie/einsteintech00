@@ -18,7 +18,7 @@
         v-if="showStudInfo"
         flat
         class="q-pa-lg row shadow-1 schoolBG "
-      >
+       >
         <div class="full-width row wrap justify-center items-center content-center">
           <div class="col-md-4 col-sm-12 row justify-center items-center content-center">
 
@@ -42,7 +42,7 @@
           <div
             v-if="studentInformationForm.idnumber === '2019 - 0111'"
             class="col-md-auto col-sm-12"
-          >
+           >
             <div class="text-h4 text-bold text-orange-8">
               Welcome TIM, FROM YOUR ADMIRER 😍😘
             </div>
@@ -101,7 +101,7 @@
           <div
             v-else-if="studentInformationForm.idnumber === '2019 - 0320'"
             class="col-md-auto col-sm-12"
-          >
+           >
             <div class="text-h4 text-bold text-orange-8">
               Welcome 🍆 💦
             </div>
@@ -191,6 +191,12 @@
               v-else-if="studentInformationForm.course === 'Computer science' "
               spaced
             ></q-separator>
+              <q-separator
+              class="bg-deep-orange-3"
+              style="height:10px"
+              v-else
+              spaced
+            ></q-separator>
             <div class="text-h2 text-bold text-blue-grey-10">
               {{studentInformationForm.idnumber}}
             </div>
@@ -213,6 +219,11 @@
               class="text-h4 text-bold text-white bg-green-10 q-mt-lg"
               size="20px"
               v-else-if="studentInformationForm.course === 'Computer science'"
+            >{{studentInformationForm.course}}</q-btn>
+             <q-btn
+              class="text-h4 text-bold text-white bg-deep-orange-10 q-mt-lg"
+              size="20px"
+              v-else
             >{{studentInformationForm.course}}</q-btn>
           </div>
         </div>
@@ -285,12 +296,12 @@
                   class="col-12 text-center"
                   style="margin-top:-40px"
                 >
-                  <h2 class="text-weight-bolder text-blue-grey-9">glomplay</h2>
+                  <h2 class="text-weight-bolder text-blue-grey-9">lily-livered</h2>
                   <h5
                     class="text-body1 text-blue-9"
                     style="margin-top:-50px"
                   >
-                    <span class="text-italic">verb</span> | GLAHM
+                    <span class="text-italic">adjective</span> | LILL-ee-LIV-erd
                   </h5>
                 </div>
               </div>
@@ -298,16 +309,11 @@
               <div>
                 <q-toolbar-title class="text-h5 text-blue-9 text-bold">Definition</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                  1 : take, steal
-                  <br>
-                  2 : seize, catch
+                  1 : lacking courage : cowardly
                 </p>
                 <q-toolbar-title class="q-pa-none text-h5 text-blue-9 text-bold">Example</q-toolbar-title>
                 <p class="text-subtitle1 text-blue-grey-10">
-                 "It would not surprise me if the sampling 'Fleabag' receives from glomming an Emmy sets it up as a series that makes viewers eagerly await new seasons." <span class="text-blue-7"> — Neal Zoren, The Delaware County (Pennsylvania) Daily Times, 30 Sept. 2019</span>
-                </p>
-                <p class="text-subtitle1 text-blue-grey-10">
-                  "A magic plastic hypno-ring glommed out of a cereal box puts him under the lads' spell and has him peeling down to his underpants and going forth to, well, mess things up."  <span class="text-blue-7"> — Soren Andersen, The Seattle Times, 1 June 2017</span>
+                 "The deus ex machina aspect of Mando's comrades popping up to save him and Baby Yoda from certain death once he proved he wasn't a lily-livered Empire flunky kind of irked me, but I often have that complaint with sci-fi and superhero stories, both of which are prone to ending battles with an out-of-nowhere assist."  <span class="text-blue-7"> — Katie Rife, The A.V. Club, 22 Nov. 2019</span>
                 </p>
               </div>
             </q-card-section>
@@ -321,18 +327,11 @@
         v-if="bibleWeek"
         class="q-pr-md q-pt-md q-pb-md col-6"
       >
-        <bibleCarousel class="q-mb-md">
-          <!-- <template v-slot:BibleData>
-            {{BibleData}}
-          </template> -->
-          {{BibleData}}
-        </bibleCarousel>
-
         <q-card
           flat
           bordered
           class="q-mb-md bg-pink-1"
-        >
+         >
           <q-toolbar>
             <q-toolbar-title class="text-weight-bolder
             text-pink-9">
@@ -433,7 +432,12 @@
 
           </q-card-section>
         </q-card>
-
+        <bibleCarousel class="q-mb-md">
+          <!-- <template v-slot:BibleData>
+            {{BibleData}}
+          </template> -->
+          {{BibleData}}
+        </bibleCarousel>
         <q-card v-if="!bibleWeek">
           <q-card-section>
             <q-toolbar-title class="text-orange-9 text-weight-bolder text-h5">VISION</q-toolbar-title>
@@ -505,6 +509,37 @@
       </q-card>
     </q-dialog>
 
+    <q-dialog v-model="dialogIdtyperPERSONNEL">
+      <q-card
+        style="width:500px"
+        class="q-pa-lg"
+      >
+        <q-toolbar>
+          <q-avatar square>
+            <img src="https://img.icons8.com/ios-filled/50/000000/security-pass.png">
+          </q-avatar>
+
+          <q-toolbar-title class="text-h6">Enter your <span class="text-weight-bold ">ID NUMBER</span> </q-toolbar-title>
+
+        </q-toolbar>
+
+        <q-card-section>
+          <q-input
+            autofocus=""
+            input-class="text-h3 text-bold text-center"
+            standout="bg-deep-orange text-white"
+            v-model="test"
+            mask="#### - ####"
+            unmasked-value
+            class="text-weight-bold "
+            @input="idnumbertype($event)"
+            @keyup.enter="enterIdnumberPERSONNEL"
+          />
+
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+
     <!-- <img src="https://firebasestorage.googleapis.com/v0/b/einstein00-cf6cc.appspot.com/o/images%2F2ynRormG3d7cNXJKZoV3?alt=media&token=f48ac41b-c87d-48dd-9f25-9dd1226d2a56"> -->
 
   </q-page>
@@ -535,6 +570,7 @@ export default {
       answerNow: false,
 
       dialogIdtyper: false,
+      dialogIdtyperPERSONNEL: false,
       slide: 1,
       test: '',
       testtester: '',
@@ -557,14 +593,15 @@ export default {
         keyIndex: '',
         course: '',
         profileImgUrl: '',
-        fullname: ''
+        fullname: '',
+        position: ''
       },
       BibleData: [],
       bibleWeek: true
     }
   },
   computed: {
-    ...mapGetters('admin', ['studentLists2']),
+    ...mapGetters('admin', ['studentLists2', 'personnelLists']),
 
     sortAnswer () {
       var indata = this.triviaData.data.results[0].incorrect_answers
@@ -619,6 +656,8 @@ export default {
         color = 'yellow-7'
       } else if (data === 'Criminology') {
         color = 'purple-7'
+      } else {
+        color = 'deep-orange-7'
       }
       return color
     },
@@ -658,12 +697,22 @@ export default {
       // axios.get('http://quotes.rest/bible/verse.json')
       axios.get('https://beta.ourmanna.com/api/v1/get/?format=text&order=random')
         .then(function (response) {
-          console.log(response)
+          // console.log(response)
           vm.BibleData = response.data
         })
         .catch(function (error) {
           console.log(error)
         })
+    },
+    enterIdnumberPERSONNEL () {
+      let vm = this
+      this.onDecodePERSONNEL(this.testtester)
+      this.testtester = null
+      // console.log(this.$refs.dummytester.focus)
+      this.dialogIdtyperPERSONNEL = false
+      Vue.nextTick(() => {
+        vm.$refs.dummytester.focus()
+      })
     },
     enterIdnumber () {
       let vm = this
@@ -683,6 +732,7 @@ export default {
         this.testtester = null
         console.log(this.$refs.dummytester.focus)
         this.dialogIdtyper = false
+        this.dialogIdtyperPERSONNEL = false
         Vue.nextTick(() => {
           vm.$refs.dummytester.focus()
         })
@@ -692,11 +742,17 @@ export default {
       }
     },
     idnumbertypetest () {
-      console.log(this.$refs)
+      // console.log(this.$refs)
       this.test = this.testtester
-      if (this.test !== '') {
+      console.log(this.test)
+      if (this.test !== '' && this.test !== '0') {
         this.dialogIdtyper = true
+        this.test = 201
+      } else if (this.test !== '' && this.test === '0') {
+        this.dialogIdtyperPERSONNEL = true
+        this.test = 201
       }
+      // this.dialogIdtyperPERSONNEL = true
       // console.log(this.testtester, this.test)
     },
     showNotif (data) {
@@ -742,6 +798,29 @@ export default {
         console.log(error)
       })
     },
+    addStatPERSONNEL (data) {
+      let vm = this
+      var options = []
+      options.push({
+        message: `Successfully Login, <br> <span class="text-capitalize">Have a nice day ${data.firstname}! </span> `,
+        color: 'light-green-8'
+      })
+
+      setTimeout(function () {
+        vm.showStudInfo = false
+        vm.studentInformationForm = {
+          firstname: '',
+          middlename: '',
+          surname: '',
+          idnumber: '',
+          keyIndex: '',
+          course: '',
+          profileImgUrl: ''
+        }
+      }, 5000)
+
+      vm.showNotif(options)
+    },
     DecodeSuccess (data) {
       this.showStudInfo = true
       this.studentInformationForm = {
@@ -756,6 +835,20 @@ export default {
 
       this.addStat(data)
     },
+    DecodeSuccessPERSONNEL (data) {
+      this.showStudInfo = true
+      this.studentInformationForm = {
+        firstname: data.firstname,
+        middlename: data.middlename,
+        surname: data.surname,
+        idnumber: data.idnumber,
+        keyIndex: data.keyIndex,
+        course: data.department,
+        position: data.position,
+        profileImgUrl: data.profileImgUrl
+      }
+      this.addStatPERSONNEL(data)
+    },
     DecodeError () {
       console.log('error')
       // var audioerror = new Audio('/statics/ringtone/suspense-message-2.mp3')
@@ -769,6 +862,25 @@ export default {
         position: 'top',
         color: 'red-10'
       })
+    },
+    onDecodePERSONNEL (result) {
+      // result = 'PHOJIEMONEX - 2019 - 0310'
+      this.showStudInfo = false
+
+      this.result = result
+      var idNUmber = replace(this.result, 'CKCM - ', '')
+      var indexData = find(this.personnelLists, ['idnumber', idNUmber])
+      // alert(idNUmber, indexData)
+      if (indexData !== undefined) {
+        // alert(idNUmber)
+        // console.log(indexData)
+        // var sound = '/statics/ringtone/notification.mp3'
+        var audio = new Audio('/statics/ringtone/apple_pay.mp3')
+        audio.play()
+        this.DecodeSuccessPERSONNEL(indexData)
+      } else {
+        this.DecodeError()
+      }
     },
     onDecode (result) {
       // result = 'PHOJIEMONEX - 2019 - 0310'
@@ -788,8 +900,6 @@ export default {
       } else {
         this.DecodeError()
       }
-      // console.log(indexData)
-      // console.log(this.studentLists2)
     },
 
     async onInit (promise) {
