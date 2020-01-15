@@ -23,8 +23,7 @@ export default {
     }
   },
   created () {
-    this.getStudentLists().then(function (result) {
-    })
+    this.getStudentLists()
     this.dataReloader()
     this.getLibraryStat()
   }
